@@ -1,0 +1,26 @@
+CREATE TABLE destaque (
+ id INT NOT NULL PRIMARY KEY,
+ titulo VARCHAR(100),
+ descricao TEXT,
+ imagem VARCHAR(100),
+ data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ status BIT(0) NOT NULL
+);
+
+CREATE TABLE produto(
+	id INT NOT NULL PRIMARY KEY,
+	nome VARCHAR(100),
+	imagem VARCHAR(100),
+	descricao TEXT,
+	data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ 	status BIT(0) NOT NULL
+);
+
+CREATE TABLE servico(
+	id INT NOT NULL PRIMARY KEY,
+	nome VARCHAR(100),
+	imagem VARCHAR(100),
+	descricao TEXT,
+	data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ 	status BIT(0) NOT NULL
+);

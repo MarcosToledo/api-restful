@@ -1,4 +1,4 @@
-package com.toledo.produto.expose;
+package com.toledo.expose;
 
 import java.io.Serializable;
 import java.util.List;
@@ -43,14 +43,16 @@ public class ProdutoResources implements Serializable {
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response alterar(@PathParam("id") String id, Produto produto) {
+		produto.setId(Integer.parseInt(id));
 		produtoDao.update(produto);
 		return Response.ok(produto, MediaType.APPLICATION_JSON).build();
 	}
 	
 	@DELETE
 	@Path("{id}")
-	public Response remover(@PathParam("id") String id, Class<Produto> produto) {
-		produtoDao.delete(id, produto);
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response remover(@PathParam("id") String id) {
+		produtoDao.delete(Integer.parseInt(id), Produto.class);
 		return Response.ok().build();
 	}
 }

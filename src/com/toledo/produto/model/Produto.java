@@ -17,25 +17,27 @@ import javax.xml.bind.annotation.XmlType;
  * The persistent class for the produto database table.
  * 
  */
-@XmlType(name = "Produto", propOrder = {"id", "titulo", "texto", "imagem", "dataDescricao"})
+@XmlType(name = "Produto", propOrder = {"id", "dataCadastro", "descricao","imagem", "nome", "status"})
 @XmlRootElement
 @Entity
 @Table(name = "produto")
 public class Produto implements Serializable {
-	private static final long serialVersionUID = 2060073917972962283L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	@Column(name="data_descricao")
-	private Date dataDescricao;
+	@Column(name="data_cadastro")
+	private Date dataCadastro;
+
+	private String descricao;
 
 	private String imagem;
 
-	private String texto;
+	private String nome;
 
-	private String titulo;
+	private byte status;
 
 	public Produto() {
 	}
@@ -48,12 +50,20 @@ public class Produto implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDataDescricao() {
-		return this.dataDescricao;
+	public Date getDataCadastro() {
+		return this.dataCadastro;
 	}
 
-	public void setDataDescricao(Date dataDescricao) {
-		this.dataDescricao = dataDescricao;
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	public String getDescricao() {
+		return this.descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getImagem() {
@@ -64,20 +74,20 @@ public class Produto implements Serializable {
 		this.imagem = imagem;
 	}
 
-	public String getTexto() {
-		return this.texto;
+	public String getNome() {
+		return this.nome;
 	}
 
-	public void setTexto(String texto) {
-		this.texto = texto;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getTitulo() {
-		return this.titulo;
+	public byte getStatus() {
+		return this.status;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setStatus(byte status) {
+		this.status = status;
 	}
 
 	/* (non-Javadoc)
@@ -96,15 +106,19 @@ public class Produto implements Serializable {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Produto other = (Produto) obj;
-		if (id != other.id)
+		if (id != other.id) {
 			return false;
+		}
 		return true;
 	}
 

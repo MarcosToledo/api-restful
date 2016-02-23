@@ -6,8 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
-
-import com.toledo.utils.annotations.Transacional;
+import javax.transaction.Transactional;
 
 /**
  * DAO genérico com JPA utilizando CMT e interceptador
@@ -25,17 +24,17 @@ public class DAO<T> implements Serializable {
 		this.classe = classe;
 	}
 
-	@Transacional
+	@Transactional
 	public void save(T entity) {
 		entityManager.persist(entity);
 	}
 
-	@Transacional
+	@Transactional
 	public T update(T entity) {
 		return entityManager.merge(entity);
 	}
 
-	@Transacional
+	@Transactional
 	public void delete(Object id, Class<T> classe) {
 		T entityToBeRemoved = entityManager.getReference(classe, id);
 		entityManager.remove(entityToBeRemoved);

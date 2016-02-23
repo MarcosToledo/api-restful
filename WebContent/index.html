@@ -1,10 +1,191 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="US-ASCII">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Sex Shop do Juca</title>
+		<link rel="stylesheet" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body onload="onresize()">
+		<header class="header">
+			<div class="div-logo">
+				<img src="images/mobile/logo.png" alt="" id="logo">
+			</div>
+			<div class="div-hamburger" onclick="menu()">
+				<img src="images/hamburger.fw.png" alt="">
+			</div>
+			<nav class="nav" id="nav">
+				<ul class="menu">
+					<li class="menu-item">
+						<a href="#">Home</a>
+					</li>
+					<li class="menu-item">
+						<a href="#">Serviços</a>
+					</li>
+					<li class="menu-item">
+						<a href="#">Produtos</a>
+					</li>
+					<li class="menu-item">
+						<a href="#">Contato</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<section class="banner-container">
+			<div class="div-sombra-banner"></div>
+			<div class="div-banner">
+				<img id="banner" class="img-banner" src="images/mobile/banner.jpg" alt="">
+			</div>
+			<div class="div-descricao-container">
+				<div class="div-texto-descricao">
+					<div class="div-titulo-banner">
+						<p>
+							Novo consolo do Sex Shop do Juca
+						</p>
+					</div>
+					<div class="div-separador"></div>
+					<div class="div-texto-banner">
+							<div id="elemento"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="titulo-container">
+			<div class="div-titulo-container">
+				<p>Produtos em destaque</p>
+			</div>
+			<div class="div-titulo-container-2"></div>
+		</section>
+		<section class="produtos-container">
+			<div class="div-produto">
+				<img src="images/produto-anel.jpg" alt="produto">
+				<div class="titulo-texto-produto">
+					<p>
+						Anel Peniano do Juca	
+					</p>
+				</div>
+				<div class="texto-produto">
+					<p>
+						Lorem ipsum Incididunt occaecat in Duis ut dolore proident. Lorem ipsum Et labore veniam in proident ut. Lorem ipsum Sint tempor esse ad officia tempor ea consectetur sunt.
+					</p>
+				</div>
+			</div>
+			<div class="div-produto">
+				<img src="images/produto-boneca.jpg" alt="produto">
+				<div class="titulo-texto-produto">
+					<p>
+						Boneca Inflável do Juca
+					</p>
+				</div>
+				<div class="texto-produto">
+					<p>
+						Lorem ipsum Incididunt occaecat in Duis ut dolore proident. Lorem ipsum Et labore veniam in proident ut. Lorem ipsum Sint tempor esse ad officia tempor ea consectetur sunt.
+					</p>
+				</div>
+			</div>
+			<div class="div-produto">
+				<img src="images/produto-oleo.jpg" alt="produto">
+				<div class="titulo-texto-produto">
+					<p>
+						Óleo Anestéscio do Juca
+					</p>
+				</div>
+				<div class="texto-produto">
+					<p>
+						Lorem ipsum Incididunt occaecat in Duis ut dolore proident. Lorem ipsum Et labore veniam in proident ut. Lorem ipsum Sint tempor esse ad officia tempor ea consectetur sunt.
+					</p>
+				</div>
+			</div>
+		</section>
+		<section class="separador-container">
+			<div class="div-separador-container"></div>
+		</section>
+		<section class="titulo-container">
+			<div class="div-titulo-container">
+				<p>Conheça nossos serviços</p>
+			</div>
+			<div class="div-titulo-container-2"></div>
+		</section>
+		<section class="servicos-container">
+			<div class="div-servico	">
+				<div class="img-container">
+					<img src="images/servico-domicilio.jpg" alt="servico">
+				</div>
+					<div class="texto-container">	
+					<div class="div-titulo-texto-servico">
+						<p>
+							Visita a domicílio
+						</p>	
+					</div>
+					<div class="div-texto-servico">
+						<p>
+							Lorem ipsum Tempor minim cupidatat dolore nostrud adipisicing eiusmod eiusmod dolore irure. Lorem ipsum Culpa ullamco ea commodo sit occaecat. Lorem ipsum Enim ut in incididunt commodo ut est voluptate. Lorem ipsum Amet minim do ut sunt sed quis magna laboris.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="div-servico">
+				<div class="img-container">
+					<img src="images/servico-massagem.jpg" alt="servico">
+				</div>
+				<div class="texto-container">
+					<div class="div-titulo-texto-servico">
+						<p>
+							Massagem do Juca
+						</p>	
+					</div>
+					<div class="div-texto-servico">
+						<p>
+							Lorem ipsum Tempor minim cupidatat dolore nostrud adipisicing eiusmod eiusmod dolore irure. Lorem ipsum Culpa ullamco ea commodo sit occaecat. Lorem ipsum Enim ut in incididunt commodo ut est voluptate. Lorem ipsum Amet minim do ut sunt sed quis magna laboris.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="separador-container">
+			<div class="div-separador-container"></div>
+		</section>
+		<section class="titulo-container">
+			<div class="div-titulo-container">
+				<p>Entre em contato</p>
+			</div>
+			<div class="div-titulo-container-2"></div>
+		</section>
+		<section class="contato-container">
+			<div class="div-contato">
+				<div class="div-formulario">
+					<div class="div-formulario-nome-email">
+						<div class="div-campo-formulario">
+							<input type="text" name="nome" placeholder="Nome">
+						</div>
+						<div class="div-campo-formulario">
+							<input type="text" name="email" placeholder="Email">
+						</div>
+					</div>
+					<div class="div-campo-formulario">
+						<input type="text" name="Assunto" placeholder="Assunto">
+					</div>
+					<div class="div-mensagem-formulario">
+						<textarea name="message" rows="10" cols="30" placeholder="Mensagem"></textarea>
+					</div>
+					<div class="div-botao">
+						<input type="button" name="enviar" value="Enviar">
+					</div>	
+				</div>
+				<div class="div-mapa">	
+					<img src="images/mapa.jpg">
+					<div class="sombra-mapa"></div>
+					<div class="div-telefone-mapa">
+						<p>Tel	:.11 9999 9999</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer class="footer">
+			<p>Marcos 2015</p>
+		</footer>
+		<script src="script/script.js" ></script>
+		<script src="script/menu.js" ></script>
+		<script src="script/xmlhttpRequest.js" ></script>
+	</body>
+</html>	
