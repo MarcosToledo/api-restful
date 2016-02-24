@@ -34,18 +34,16 @@
 		<section class="banner-container">
 			<div class="div-sombra-banner"></div>
 			<div class="div-banner">
-				<img id="banner" class="img-banner" src="images/mobile/banner.jpg" alt="">
+				<img id="banner" class="img-banner" >
 			</div>
 			<div class="div-descricao-container">
 				<div class="div-texto-descricao">
 					<div class="div-titulo-banner">
-						<p>
-							Novo consolo do Sex Shop do Juca
-						</p>
+						<p id="tituloDestaque"></p>
 					</div>
 					<div class="div-separador"></div>
 					<div class="div-texto-banner">
-							<div id="elemento"></div>
+							<p id="textoDestaque"></p>
 					</div>
 				</div>
 			</div>
@@ -56,47 +54,7 @@
 			</div>
 			<div class="div-titulo-container-2"></div>
 		</section>
-		<section class="produtos-container">
-			<div class="div-produto">
-				<img src="images/produto-anel.jpg" alt="produto">
-				<div class="titulo-texto-produto">
-					<p>
-						Anel Peniano do Juca	
-					</p>
-				</div>
-				<div class="texto-produto">
-					<p>
-						Lorem ipsum Incididunt occaecat in Duis ut dolore proident. Lorem ipsum Et labore veniam in proident ut. Lorem ipsum Sint tempor esse ad officia tempor ea consectetur sunt.
-					</p>
-				</div>
-			</div>
-			<div class="div-produto">
-				<img src="images/produto-boneca.jpg" alt="produto">
-				<div class="titulo-texto-produto">
-					<p>
-						Boneca Inflável do Juca
-					</p>
-				</div>
-				<div class="texto-produto">
-					<p>
-						Lorem ipsum Incididunt occaecat in Duis ut dolore proident. Lorem ipsum Et labore veniam in proident ut. Lorem ipsum Sint tempor esse ad officia tempor ea consectetur sunt.
-					</p>
-				</div>
-			</div>
-			<div class="div-produto">
-				<img src="images/produto-oleo.jpg" alt="produto">
-				<div class="titulo-texto-produto">
-					<p>
-						Óleo Anestéscio do Juca
-					</p>
-				</div>
-				<div class="texto-produto">
-					<p>
-						Lorem ipsum Incididunt occaecat in Duis ut dolore proident. Lorem ipsum Et labore veniam in proident ut. Lorem ipsum Sint tempor esse ad officia tempor ea consectetur sunt.
-					</p>
-				</div>
-			</div>
-		</section>
+		<section id="produtoContainer" class="produtos-container"></section>
 		<section class="separador-container">
 			<div class="div-separador-container"></div>
 		</section>
@@ -106,42 +64,7 @@
 			</div>
 			<div class="div-titulo-container-2"></div>
 		</section>
-		<section class="servicos-container">
-			<div class="div-servico	">
-				<div class="img-container">
-					<img src="images/servico-domicilio.jpg" alt="servico">
-				</div>
-					<div class="texto-container">	
-					<div class="div-titulo-texto-servico">
-						<p>
-							Visita a domicílio
-						</p>	
-					</div>
-					<div class="div-texto-servico">
-						<p>
-							Lorem ipsum Tempor minim cupidatat dolore nostrud adipisicing eiusmod eiusmod dolore irure. Lorem ipsum Culpa ullamco ea commodo sit occaecat. Lorem ipsum Enim ut in incididunt commodo ut est voluptate. Lorem ipsum Amet minim do ut sunt sed quis magna laboris.
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="div-servico">
-				<div class="img-container">
-					<img src="images/servico-massagem.jpg" alt="servico">
-				</div>
-				<div class="texto-container">
-					<div class="div-titulo-texto-servico">
-						<p>
-							Massagem do Juca
-						</p>	
-					</div>
-					<div class="div-texto-servico">
-						<p>
-							Lorem ipsum Tempor minim cupidatat dolore nostrud adipisicing eiusmod eiusmod dolore irure. Lorem ipsum Culpa ullamco ea commodo sit occaecat. Lorem ipsum Enim ut in incididunt commodo ut est voluptate. Lorem ipsum Amet minim do ut sunt sed quis magna laboris.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
+		<section id="servicosContainer" class="servicos-container"></section>
 		<section class="separador-container">
 			<div class="div-separador-container"></div>
 		</section>
@@ -186,6 +109,8 @@
 		</footer>
 		<script src="script/script.js" ></script>
 		<script src="script/menu.js" ></script>
-		<script src="script/xmlhttpRequest.js" ></script>
+		<script src="script/produtoRequest.js" ></script>
+		<script src="script/servicoRequest.js" ></script>
+		<script src="script/destaqueRequest.js" ></script>
 	</body>
 </html>	

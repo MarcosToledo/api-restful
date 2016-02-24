@@ -7,9 +7,6 @@ function onresize() {
 	}
 
 	alterarImagens(device);
-
-	console.log(windowWidth);	
-	console.log(device);
 }
 
 function alterarImagens(device) {

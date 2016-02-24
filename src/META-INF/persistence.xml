@@ -8,6 +8,10 @@
       	<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
 		<jta-data-source>java:/api_restful</jta-data-source>
 		<class>com.toledo.produto.model.Produto</class>
+		<class>com.toledo.Produto</class>
+		<class>com.toledo.Servico</class>
+		<class>com.toledo.servico.model.Servico</class>
+		<class>com.toledo.destaque.model.Destaque</class>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
