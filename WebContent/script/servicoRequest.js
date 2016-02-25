@@ -1,6 +1,7 @@
 var requestServico = new XMLHttpRequest();
 var url = "http://localhost:8080/api-restful/api/servicos";
 requestServico.open("GET", url, true);
+requestServico.setRequestHeader("Authorization", "marcos");
 requestServico.withCredentials = false;
 
 requestServico.onload = function (e) {

@@ -33,4 +33,8 @@ public class DestaqueService implements Serializable {
 	public List<Destaque> findAll() {
 		return dao.findAll();
 	}
+	
+	public String nome() {
+		return "";
+	}
 }
