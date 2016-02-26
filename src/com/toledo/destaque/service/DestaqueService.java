@@ -19,7 +19,7 @@ public class DestaqueService implements Serializable {
 	}
 
 	public void update(Destaque destaque) {
-		
+		dao.update(destaque);
 	}
 
 	public void remove(Destaque destaque) {
@@ -32,9 +32,5 @@ public class DestaqueService implements Serializable {
 
 	public List<Destaque> findAll() {
 		return dao.findAll();
-	}
-	
-	public String nome() {
-		return "";
 	}
 }

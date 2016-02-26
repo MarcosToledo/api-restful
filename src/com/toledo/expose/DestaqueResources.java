@@ -16,8 +16,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.toledo.destaque.dao.DestaqueDao;
 import com.toledo.destaque.model.Destaque;
+import com.toledo.destaque.service.DestaqueService;
 
 @Path("/destaques")
 @RequestScoped
@@ -25,18 +25,18 @@ public class DestaqueResources implements Serializable {
 	private static final long serialVersionUID = 4437809454854639562L;
 	
 	@Inject
-	private DestaqueDao destaqueDao;
+	private DestaqueService destaqueService;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Destaque> buscarTodos() {
-		return destaqueDao.findAll();
+		return destaqueService.findAll();
 	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(Destaque destaque){
-		destaqueDao.save(destaque);
+		destaqueService.save(destaque);
 		return Response.ok(destaque, MediaType.APPLICATION_JSON).build();
 	}
 	@PUT
@@ -44,15 +44,15 @@ public class DestaqueResources implements Serializable {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response alterar(@PathParam("id") String id, Destaque destaque) {
 		destaque.setId(Integer.parseInt(id));
-		destaqueDao.update(destaque);
+		destaqueService.update(destaque);
 		return Response.ok(destaque, MediaType.APPLICATION_JSON).build();
 	}
 	
 	@DELETE
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response remover(@PathParam("id") String id) {
-		destaqueDao.delete(Integer.parseInt(id), Destaque.class);
+	public Response remover(@PathParam("id") String id, Destaque destaque) {
+		destaqueService.remove(destaque);
 		return Response.ok().build();
 	}
 }

@@ -16,43 +16,44 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.toledo.usuario.dao.UsuarioDao;
 import com.toledo.usuario.model.Usuario;
+import com.toledo.usuario.service.UsuarioService;
 
 @Path("/usuarios")
 @RequestScoped
 public class UsuarioResources implements Serializable {
 	private static final long serialVersionUID = 4971020141032483033L;
-
+	
 	@Inject
-	private UsuarioDao usuarioDao;
+	private UsuarioService usuarioService;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Usuario> buscarTodos() {
-		return usuarioDao.findAll();
+		return usuarioService.findAll();
 	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(Usuario usuario){
-		usuarioDao.save(usuario);
+		usuarioService.save(usuario);
 		return Response.ok(usuario, MediaType.APPLICATION_JSON).build();
 	}
+	
 	@PUT
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response alterar(@PathParam("id") String id, Usuario usuario) {
 		usuario.setId(Integer.parseInt(id));
-		usuarioDao.update(usuario);
+		usuarioService.update(usuario);
 		return Response.ok(usuario, MediaType.APPLICATION_JSON).build();
 	}
 	
 	@DELETE
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response remover(@PathParam("id") String id) {
-		usuarioDao.delete(Integer.parseInt(id), Usuario.class);
+	public Response remover(@PathParam("id") String id, Usuario usuario) {
+		usuarioService.remove(usuario);
 		return Response.ok().build();
 	}
 }
