@@ -25,10 +25,13 @@ public class AuthenticationRequestFilter implements ContainerRequestFilter, Seri
 	
 	@Override
 	public ContainerRequest filter(ContainerRequest request) {
-		
 		String token = request.getHeaderValue("authorization");
 		String usuario = null;
-
+		
+		if (request.getPath().equals("produtos") || request.getPath().equals("usuarios/logar") || request.getPath().equals("destaques") || request.getPath().equals("servicos")) {
+			return request;
+		}
+		
 		try {
 			usuario = TokenAuthenticationGenerator.getUserJsonFromToken(token);
 		} catch (Exception e) {

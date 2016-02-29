@@ -1,7 +1,6 @@
 var requestProduto = new XMLHttpRequest();
 var url = "http://localhost:8080/api-restful/api/produtos";
 requestProduto.open("GET", url, true);
-requestProduto.setRequestHeader("Authorization", "marcos");
 requestProduto.withCredentials = false;
 
 requestProduto.onload = function (e) {

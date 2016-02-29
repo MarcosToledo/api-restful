@@ -7,6 +7,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body onload="onresize()">
+		<div id="modal" class="modal-container div-hide"></div>
+		<div id="login" class="div-login div-hide">
+			<button type="button" class="close-modal" onclick="fecharModal()">×</button>
+			<label class="lbl-login">Faça o login</label>
+			<div class="input-login">
+				<input id="inputLogin" class="campo" type="text" name="Login" placeholder="Login">
+				<input id="inputSenha" class="campo" type="password" name="senha" placeholder="Senha">
+			</div>
+			<button type="button" class="btn-loggar" onclick="validarLogin()" ><p>Entrar</p></button>
+		</div>
 		<header class="header">
 			<div class="div-logo">
 				<img src="images/mobile/logo.png" alt="" id="logo">
@@ -27,6 +37,9 @@
 					</li>
 					<li class="menu-item">
 						<a href="#">Contato</a>
+					</li>
+					<li class="menu-item">
+						<a onclick="abrirModal()">Login</a>
 					</li>
 				</ul>
 			</nav>

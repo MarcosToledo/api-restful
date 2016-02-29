@@ -408,7 +408,8 @@
 		.banner-container {
 			position: relative;
 			width: 100%;
-			height: 390px;
+			height: 390px;,    
+			z-index: 50;
 		}
 
 		.div-sombra-banner {
@@ -709,3 +710,73 @@
 	}
 }
 
+.div-hide {
+	display: none;
+}
+
+.modal-container {
+	position: fixed;
+	overflow:hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity : 0.8;
+    z-index: 100;
+}
+
+.div-login {
+	position: fixed;
+    width: 650px;
+    height: 350px;
+    top: 30%;
+    left: 25%;
+    background-color: #ffffff;
+    z-index: 300;
+    border-radius: 2px;
+}
+
+.input-login {
+	display: flex;
+	flex-direction: column;
+	margin: 70px 0 0px 10%;
+}
+
+.campo {
+	width: 520px;
+    height: 50px;
+    margin: 25px 0 0 0;
+    padding: 0px 0px 0px 15px;
+    border-radius: 3px;
+    border-style: ridge;
+}
+
+.close-modal {
+	position: absolute;
+    width: 25px;
+    background-color: white;
+    border-style: none;
+    top: 17px;
+    left: 94%;
+}
+
+.btn-loggar {
+	width: 150px;
+    height: 50px;
+    margin: 20px 0px 0px 10%;
+    background-color: #C2185B;
+    border-style: none;
+    border-radius: 3px;
+}
+
+.btn-loggar p {
+	color: #fff;
+}
+
+.lbl-login {
+	position: absolute;
+    background-color: white;
+    top: 35px;
+    left: 10%;
+    color: #C2185B;
+    font-size: 25px;
+}

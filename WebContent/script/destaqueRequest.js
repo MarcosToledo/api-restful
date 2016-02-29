@@ -1,7 +1,6 @@
 var requestDestaque = new XMLHttpRequest();
 var url = "http://localhost:8080/api-restful/api/destaques";
 requestDestaque.open("GET", url, true);
-requestDestaque.setRequestHeader("Authorization", "marcos");
 requestDestaque.withCredentials = false;
 
 requestDestaque.onload = function (e) {

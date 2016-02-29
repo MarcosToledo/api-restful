@@ -3,6 +3,7 @@ package com.toledo.usuario.dao;
 import java.io.Serializable;
 
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import com.toledo.dao.DAO;
@@ -27,8 +28,10 @@ public class UsuarioDAO extends DAO<Usuario> implements Serializable {
 			query.setParameter("senha", password);
 			
 			usuario = (Usuario) query.getSingleResult();
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (NoResultException e) {
+			return usuario;
+		} catch (Exception er) {
+			er.printStackTrace();
 		}
 		return usuario;		
 	}
