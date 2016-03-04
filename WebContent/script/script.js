@@ -1,3 +1,17 @@
+function carregarIndex() {
+	onresize();
+	produtoGet();
+	servicoGet();
+}
+
+function carregarDestaque() {
+	destaqueConsoleGet();
+}
+
+function carregarDestaqueAlterar() {
+	alterarDestaque(data);
+}
+
 function onresize() {
 	var windowWidth = screen.width;
 	var device = 'mobile';
@@ -5,7 +19,6 @@ function onresize() {
 	if (windowWidth > 800) {
 		device = 'desktop';
 	}
-
 	alterarImagens(device);
 }
 
@@ -24,6 +37,10 @@ function abrirModal() {
 	document.body.style.overflow = 'hidden';
 }
 
+function recuperarToken() {
+	return (sessionStorage.token === undefined)  ? "" : sessionStorage.token;
+}
+
 function fecharModal() {
 	document.getElementById("modal").style.display = "none";
 	document.getElementById("login").style.display = "none";
@@ -31,7 +48,7 @@ function fecharModal() {
 }
 	
 function validarLogin() {
-	if (document.getElementById("inputLogin").value == "" || document.getElementById("inputSenha").value == "" ){
+	if (document.getElementById("inputLogin").value === "" || document.getElementById("inputSenha").value === "" ){
 		alert("Por favor, preencha os campos");
 	}
 	else logar();
@@ -39,7 +56,7 @@ function validarLogin() {
 
 function logar() {
 	var requestLogin = new XMLHttpRequest();
-	var url = "http://localhost:8080/api-restful/api/usuarios/logar";
+	var url = "http://localhost:8080/api-restful/api/console/usuarios/logar";
 	requestLogin.open("POST", url, true);
 	requestLogin.setRequestHeader("Content-type", "application/JSON");
 	
@@ -48,18 +65,19 @@ function logar() {
 
 	var json = '{"login" : "'+login+'", "senha" : "'+senha+'"}';
 	
-	
 	requestLogin.onload = function (e) {
-		console.log(requestLogin.statusText);
-		key = requestLogin.status;
 		
-		switch (key) {
+		var obj = JSON.parse(requestLogin.responseText); 
+		var responseStatus = requestLogin.status;
+
+		switch (responseStatus) {
 		case 401:
 			alert("Usuário e senha incorretos");
 			break;
 		case 200:
-			alert("Direcionando para outra tela")
-			break
+			sessionStorage.setItem('token', obj.token);
+			location.href= "console/destaques.html";
+			break;
 		default:
 			break;
 		}
@@ -68,6 +86,25 @@ function logar() {
 	requestLogin.onerror = function (e) {
 		console.error(requestLogin.statusText);
 	};
-
+	
 	requestLogin.send(json);
 }
+
+function novoDestaque(){
+	location.href= "destaque.html";
+}
+
+function abrirALterarDestaque(data){
+	var id = data.getAttribute("data-id");
+}
+
+
+
+function voltar() {
+	location.href= "destaques.html";
+}
+
+function sair() {
+	location.href= "index.html";
+}
+

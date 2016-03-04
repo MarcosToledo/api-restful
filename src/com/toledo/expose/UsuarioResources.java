@@ -22,7 +22,7 @@ import org.json.JSONObject;
 import com.toledo.usuario.model.Usuario;
 import com.toledo.usuario.service.UsuarioService;
 
-@Path("/usuarios")
+@Path("/console/usuarios")
 @RequestScoped
 public class UsuarioResources implements Serializable {
 	private static final long serialVersionUID = 4971020141032483033L;

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Sex Shop do Juca</title>
+		<link rel="stylesheet" href="../style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+		<header class="header">
+			<div class="div-logo">
+				<img src="../images/mobile/logo.png" alt="logo">
+			</div>
+			<div class="div-hamburger" onclick="menu()">
+				<img src="../images/banner.fw.png" alt="">
+			</div>
+			<nav class="nav" id="nav">
+				<ul class="menu">
+					<li class="menu-item">
+						<a href="../index.html">Home</a>
+					</li>
+					<li class="menu-item">
+						<a href="#">Destaque</a>
+					</li>
+					<li class="menu-item">
+						<a href="#">Serviços</a>
+					</li>
+					<li class="menu-item">
+						<a href="#">Produtos</a>
+					</li>
+					<li class="menu-item">
+						<a href="../index.html">Sair</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+			<div id="formulario" class="div-formulario">
+				<div class="div-titulo">
+					<label class="lbl-titulo-alteracao">Titulo</label>
+					<input id="inputTitulo" class="campo-titulo-alteracao" type="text" name="Titulo">
+				</div>
+				<div class="div-descricao">
+					<label class="lbl-descricao-alteracao">Descrição</label>
+					<textarea id="inputDescricao" class="campo-descricao-alteracao" rows="10" cols="50"></textarea>
+				</div>
+				<div class="div-imagem">
+					<label class="lbl-imagem-alteracao">Imagem</label>
+					<input id="inputImagem" class="campo-imagem-alteracao" type="text" name="Imagem">
+				</div>	
+			</div>
+			<div>
+				<button type="button" class="btn-form-alteracao" onclick="" ><p>Salvar</p></button>
+				<button type="button" class="btn-form-alteracao" onclick="voltar()" ><p>Voltar</p></button>
+			</div>
+		</section>
+		<script src="../script/script.js" ></script>
+		<script src="../script/destaqueRequest.js" ></script>
+	</body>
+</html>	

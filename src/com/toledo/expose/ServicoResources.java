@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 import com.toledo.servico.dao.ServicoDao;
 import com.toledo.servico.model.Servico;
 
-@Path("/servicos")
+@Path("/console/servicos")
 @RequestScoped
 public class ServicoResources implements Serializable {
 	private static final long serialVersionUID = 4971020141032483033L;

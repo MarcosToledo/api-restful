@@ -28,7 +28,7 @@ public class AuthenticationRequestFilter implements ContainerRequestFilter, Seri
 		String token = request.getHeaderValue("authorization");
 		String usuario = null;
 		
-		if (request.getPath().equals("produtos") || request.getPath().equals("usuarios/logar") || request.getPath().equals("destaques") || request.getPath().equals("servicos")) {
+		if (request.getPath().equals("site/produtos") || request.getPath().equals("console/usuarios/logar") || request.getPath().equals("site/destaques") || request.getPath().equals("site/servicos")) {
 			return request;
 		}
 		
@@ -51,7 +51,7 @@ public class AuthenticationRequestFilter implements ContainerRequestFilter, Seri
 				return request;
 			}
 		}
-		if (token == null) {
+		if (token == null || token.isEmpty()) {
 			throw new WebApplicationException(Status.UNAUTHORIZED);
 		}
 		

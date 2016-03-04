@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 import com.toledo.destaque.model.Destaque;
 import com.toledo.destaque.service.DestaqueService;
 
-@Path("/destaques")
+@Path("/console/destaques")
 @RequestScoped
 public class DestaqueResources implements Serializable {
 	private static final long serialVersionUID = 4437809454854639562L;
@@ -33,12 +33,20 @@ public class DestaqueResources implements Serializable {
 		return destaqueService.findAll();
 	}
 	
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Destaque buscarPorId(@PathParam("id") String id) {
+		return destaqueService.findById(Integer.parseInt(id));
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(Destaque destaque){
 		destaqueService.save(destaque);
 		return Response.ok(destaque, MediaType.APPLICATION_JSON).build();
 	}
+	
 	@PUT
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)

@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 import com.toledo.produto.dao.ProdutoDao;
 import com.toledo.produto.model.Produto;
 
-@Path("/produtos")
+@Path("/console/produtos")
 @RequestScoped
 public class ProdutoResources implements Serializable {
 	private static final long serialVersionUID = -8662991551417752419L;
@@ -39,6 +39,7 @@ public class ProdutoResources implements Serializable {
 		produtoDao.save(produto);
 		return Response.ok(produto, MediaType.APPLICATION_JSON).build();
 	}
+	
 	@PUT
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)

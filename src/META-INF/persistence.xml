@@ -3,13 +3,13 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="api_restful" transaction-type="JTA">
-
+		
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
       	<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
 		<jta-data-source>java:/api_restful</jta-data-source>
+		<class>com.toledo.destaque.model.Destaque</class>
 		<class>com.toledo.produto.model.Produto</class>
 		<class>com.toledo.servico.model.Servico</class>
-		<class>com.toledo.destaque.model.Destaque</class>
 		<class>com.toledo.usuario.model.Usuario</class>
 
 		<properties>
@@ -28,6 +28,6 @@
 			<property name="hibernate.c3p0.max_statements" value="50" />
 			<property name="hibernate.c3p0.idle_test_period" value="1500" />
 		</properties>
-		
+
 	</persistence-unit>
 </persistence>
