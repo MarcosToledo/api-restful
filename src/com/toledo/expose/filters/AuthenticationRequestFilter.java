@@ -28,7 +28,10 @@ public class AuthenticationRequestFilter implements ContainerRequestFilter, Seri
 		String token = request.getHeaderValue("authorization");
 		String usuario = null;
 		
-		if (request.getPath().equals("site/produtos") || request.getPath().equals("console/usuarios/logar") || request.getPath().equals("site/destaques") || request.getPath().equals("site/servicos")) {
+		if (request.getPath().equals("site/produtos") 
+				|| request.getPath().equals("console/usuarios/logar") 
+				|| request.getPath().equals("site/destaques") 
+				|| request.getPath().equals("site/servicos")) {
 			return request;
 		}
 		

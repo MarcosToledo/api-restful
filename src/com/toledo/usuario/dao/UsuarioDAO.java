@@ -9,7 +9,6 @@ import javax.persistence.Query;
 import com.toledo.dao.DAO;
 import com.toledo.usuario.model.Usuario;
 
-
 @Stateless
 public class UsuarioDAO extends DAO<Usuario> implements Serializable {
 	private static final long serialVersionUID = -2964701180845133362L;

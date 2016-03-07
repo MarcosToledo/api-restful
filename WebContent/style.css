@@ -764,7 +764,6 @@ th {
 	cursor: pointer;
 }
 
-
 .btn-form {
 	position: relative;
 	width: 100px;
@@ -883,5 +882,79 @@ textarea:disabled {
 }
 
 .btn-form-alteracao p {
+	color: #fff;
+}
+
+#btnAlterarDestaque {
+	display: none;
+}
+
+.btn-alterar {
+	position: relative;
+	width: 100px;
+	height: 35px;
+	background-image: linear-gradient(to bottom, #526cfe, #5397FE);
+	border-style: none;
+	border-radius: 3px;
+	margin: 30px 0px 30px 2%;
+}
+
+.btn-alterar p {
+	color: #fff;
+}
+
+.btn-novo {
+	position: relative;
+	width: 100px;
+	height: 35px;
+	background-image: linear-gradient(to bottom, #526cfe, #5397FE);
+	border-style: none;
+	border-radius: 3px;
+	margin: 30px 0px 30px 15%;
+}
+
+.btn-novo p {
+	color: #fff;
+}
+
+.btn-salvar-alteracao {
+	position: relative;
+	width: 100px;
+	height: 35px;
+	background-image: linear-gradient(to bottom, #526cfe, #5397FE);
+	border-style: none;
+	border-radius: 3px;
+	margin: 30px 0px 30px 15%;
+}
+
+.btn-salvar-alteracao p {
+	color: #fff;
+}
+
+.btn-voltar-alteracao {
+	position: relative;
+	width: 100px;
+	height: 35px;
+	background-image: linear-gradient(to bottom, #526cfe, #5397FE);
+	border-style: none;
+	border-radius: 3px;
+	margin: 30px 0px 30px 2%;
+}
+
+.btn-voltar-alteracao p {
+	color: #fff;
+}
+
+.btn-remover-alteracao {
+	position: relative;
+	width: 100px;
+	height: 35px;
+	background-image: linear-gradient(to bottom, #526cfe, #5397FE);
+	border-style: none;
+	border-radius: 3px;
+	margin: 30px 0px 30px 2%;
+}
+
+.btn-remover-alteracao p {
 	color: #fff;
 }

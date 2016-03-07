@@ -1,172 +1,209 @@
-function destaqueSiteGet() {
-	var requestDestaque = new XMLHttpRequest();
-	var url = "http://localhost:8080/api-restful/api/site/destaques";
-	requestDestaque.open("GET", url, true);
-	requestDestaque.withCredentials = false;
+  function destaqueSiteGet() {
+    var requestDestaque = new XMLHttpRequest();
+    var url = "http://localhost:8080/api-restful/api/site/destaques";
+    requestDestaque.open("GET", url, true);
+    requestDestaque.withCredentials = false;
 
-	requestDestaque.onload = function(e) {
-		var dados = JSON.parse(requestDestaque.responseText);
+    requestDestaque.onload = function(e) {
+      var dados = JSON.parse(requestDestaque.responseText);
 
-		var titulo = dados.destaque.titulo;
-		var descricao = dados.destaque.descricao;
-		var imagem = dados.destaque.imagem;
+      var titulo = dados.destaque.titulo;
+      var descricao = dados.destaque.descricao;
+      var imagem = dados.destaque.imagem;
 
-		document.getElementById("tituloDestaque").innerHTML = titulo;
-		document.getElementById("textoDestaque").innerHTML = descricao;
-		document.getElementById("banner").src = "images/" + imagem;
-	}
+      document.getElementById("tituloDestaque").innerHTML = titulo;
+      document.getElementById("textoDestaque").innerHTML = descricao;
+      document.getElementById("banner").src = "images/" + imagem;
+    }
 
-	requestDestaque.onerror = function(e) {
-		console.error(requestDestaque.statusText);
-	};
+    requestDestaque.onerror = function(e) {
+      console.error(requestDestaque.statusText);
+    };
 
-	requestDestaque.send();
-}
+    requestDestaque.send();
+  }
 
-function destaqueConsoleGet() {
-	var requestDestaque = new XMLHttpRequest();
-	var url = "http://localhost:8080/api-restful/api/console/destaques";
-	requestDestaque.open("GET", url, true);
-	requestDestaque.withCredentials = false;
-	var tokenRecuperado = recuperarToken();
-	requestDestaque.setRequestHeader("Authorization", tokenRecuperado);
+  function destaqueConsoleGet() {
+    var requestDestaque = new XMLHttpRequest();
+    var url = "http://localhost:8080/api-restful/api/console/destaques";
+    requestDestaque.open("GET", url, true);
+    requestDestaque.withCredentials = false;
+    var tokenRecuperado = recuperarToken();
+    requestDestaque.setRequestHeader("Authorization", tokenRecuperado);
 
-	requestDestaque.onload = function(e) {
-		var destaques = JSON.parse(requestDestaque.responseText);
-		var destaqueRow = "";
+    requestDestaque.onload = function(e) {
+      var destaques = JSON.parse(requestDestaque.responseText);
+      var destaqueRow = "";
 
-		destaqueRow += '<tr class="cabecalho"><th>Titulo</th><th>Descrição</th><th>Imagem</th></tr>';
+      destaqueRow += '<tr class="cabecalho"><th>Titulo</th><th>Descrição</th><th>Imagem</th></tr>';
 
-		for (key in destaques.destaque) {
+      for (key in destaques.destaque) {
 
-			var titulo = destaques.destaque[key].titulo;
-			var descricao = destaques.destaque[key].descricao;
-			var imagem = destaques.destaque[key].imagem;
+        var titulo = destaques.destaque[key].titulo;
+        var descricao = destaques.destaque[key].descricao;
+        var imagem = destaques.destaque[key].imagem;
 
-			destaqueRow += '<tr class="linha">'
-					+ '<td class="coluna" onclick="recuperaIdDestaque(this)" data-id='
-					+ destaques.destaque[key].id
-					+ '>'
-					+ titulo
-					+ '</td>'
-					+ '<td class="coluna" onclick="recuperaIdDestaque(this)" data-id='
-					+ destaques.destaque[key].id
-					+ '>'
-					+ descricao
-					+ '</td>'
-					+ '<td class="coluna" onclick="recuperaIdDestaque(this)" data-id='
-					+ destaques.destaque[key].id + '>' + imagem + '</td></tr>';
-		}
-		document.getElementById("table").innerHTML = destaqueRow;
-	}
-	requestDestaque.onerror = function(e) {
-		console.error(requestDestaque.statusText);
-	};
+        destaqueRow += '<tr class="linha">' +
+        '<td class="coluna" onclick="recuperaIdDestaque(this); btnAlterarNone();" data-id='+ destaques.destaque[key].id+ '>'+titulo+'</td>' +
+        '<td class="coluna" onclick="recuperaIdDestaque(this)" data-id='+ destaques.destaque[key].id+ '>'+ descricao+ '</td>'+
+        '<td class="coluna" onclick="recuperaIdDestaque(this)" data-id='+ destaques.destaque[key].id + '>' + imagem + '</td>' +
+        '</tr>';
+      }
+      document.getElementById("table").innerHTML = destaqueRow;
+    }
+    requestDestaque.onerror = function(e) {
+      console.error(requestDestaque.statusText);
+    };
 
-	requestDestaque.send();
-}
+    requestDestaque.send();
+  }
 
-function recuperaIdDestaque(data) {
-	var idDestaque = data.getAttribute("data-id");
-	var requestDestaque = new XMLHttpRequest();
-	var url = "http://localhost:8080/api-restful/api/console/destaques/"+ idDestaque;
-	requestDestaque.open("GET", url, true);
-	requestDestaque.withCredentials = false;
+  function recuperaIdDestaque(data) {
+    var idDestaque = data.getAttribute("data-id");
+    var requestDestaque = new XMLHttpRequest();
+    var url = "http://localhost:8080/api-restful/api/console/destaques/"+ idDestaque;
+    requestDestaque.open("GET", url, true);
+    requestDestaque.withCredentials = false;
 
-	var tokenRecuperado = recuperarToken();
-	requestDestaque.setRequestHeader("Authorization", tokenRecuperado);
+    var tokenRecuperado = recuperarToken();
+    requestDestaque.setRequestHeader("Authorization", tokenRecuperado);
 
-	requestDestaque.onload = function(e) {
-		var destaques = JSON.parse(requestDestaque.responseText);
+    requestDestaque.onload = function(e) {
+      var destaques = JSON.parse(requestDestaque.responseText);
 
-		var titulo = destaques.titulo;
-		var descricao = destaques.descricao;
-		var imagem = destaques.imagem;
-		var id = destaques.id;
+      var titulo = destaques.titulo;
+      var descricao = destaques.descricao;
+      var imagem = destaques.imagem;
+      var id = destaques.id;
 
-		document.getElementById("inputTitulo").value = titulo;
-		document.getElementById("inputDescricao").value = descricao;
-		document.getElementById("inputImagem").value = imagem;
-		document.getElementById("btnAlterarDestaque").setAttribute("data-id",
-				id);
-	}
+      document.getElementById("inputTitulo").value = titulo;
+      document.getElementById("inputDescricao").value = descricao;
+      document.getElementById("inputImagem").value = imagem;
+      document.getElementById("btnAlterarDestaque").setAttribute("data-id",
+        id);
+    }
 
-	requestDestaque.onerror = function(e) {
-		console.error(requestDestaque.statusText);
-	};
+    requestDestaque.onerror = function(e) {
+      console.error(requestDestaque.statusText);
+    };
 
-	requestDestaque.send();
-}
+    requestDestaque.send();
+  }
 
-function mostrarAlterar(id) {
-	var idDestaque = id;
-	var requestDestaque = new XMLHttpRequest();
-	var url = "http://localhost:8080/api-restful/api/console/destaques/"+ idDestaque;
-	requestDestaque.open("GET", url, true);
-	requestDestaque.withCredentials = false;
+  function mostrarAlterar(id) {
+    var idDestaque = id;
+    var requestDestaque = new XMLHttpRequest();
+    var url = "http://localhost:8080/api-restful/api/console/destaques/"+ idDestaque;
+    requestDestaque.open("GET", url, true);
+    requestDestaque.withCredentials = false;
 
-	var tokenRecuperado = recuperarToken();
-	requestDestaque.setRequestHeader("Authorization", tokenRecuperado);
+    var tokenRecuperado = recuperarToken();
+    requestDestaque.setRequestHeader("Authorization", tokenRecuperado);
 
-	requestDestaque.onload = function(e) {
-		var destaques = JSON.parse(requestDestaque.responseText);
+    requestDestaque.onload = function(e) {
+      var destaques = JSON.parse(requestDestaque.responseText);
 
-		var titulo = destaques.titulo;
-		var descricao = destaques.descricao;
-		var imagem = destaques.imagem;
+      var titulo = destaques.titulo;
+      var descricao = destaques.descricao;
+      var imagem = destaques.imagem;
 
-		document.getElementById("inputTitulo").value = titulo;
-		document.getElementById("inputDescricao").value = descricao;
-		document.getElementById("inputImagem").value = imagem;
-	}
+      document.getElementById("inputTitulo").value = titulo;
+      document.getElementById("inputDescricao").value = descricao;
+      document.getElementById("inputImagem").value = imagem;
+    }
 
-	requestDestaque.onerror = function(e) {
-		console.error(requestDestaque.statusText);
-	};
+    requestDestaque.onerror = function(e) {
+      console.error(requestDestaque.statusText);
+    };
 
-	requestDestaque.send();
-}
+    requestDestaque.send();
+  }
 
-function alterarDestaque(data) {
-	var id = data.getAttribute("data-id");
-	location.href= "destaque.html?id="+id;
-}
+  function alterarDestaque(data) {
+    var id = data.getAttribute("data-id");
+    location.href= "destaque.html?id="+id;
+  }
 
-function destaquePost() {
-	var requestLogin = new XMLHttpRequest();
-	var url = "http://localhost:8080/api-restful/api/console/destaques";
-	requestLogin.open("POST", url, true);
-	requestLogin.setRequestHeader("Content-type", "application/JSON");
+  function destaquePost() {
+    var post = new XMLHttpRequest();
+    var url = "http://localhost:8080/api-restful/api/console/destaques";
+    post.open("POST", url, true);
+    post.setRequestHeader("Content-type", "application/JSON");
 
-	var tokenRecuperado = recuperarToken();
-	requestDestaque.setRequestHeader("Authorization", tokenRecuperado);
-	
-	var titulo = document.getElementById("inputTitulo").value;
-	var descricao = document.getElementById("inputDescricao").value;
-	var imagem = document.getElementById("inputImagem").value;
+    var tokenRecuperado = recuperarToken();
+    post.setRequestHeader("Authorization", tokenRecuperado);
 
-	var json = '{"titulo" : "'+titulo+'", "dataCadastro":"'+new Date+'", "descricao" : "'+descricao+'", "imagem" :"'+imagem+'", "status":"1"}';
-	
-	requestLogin.onload = function (e) {
-		
-		var obj = JSON.parse(requestLogin.responseText); 
-		var responseStatus = requestLogin.status;
-		console.log(responseStatus);
+    var titulo = document.getElementById("inputTitulo").value;
+    var descricao = document.getElementById("inputDescricao").value;
+    var imagem = document.getElementById("inputImagem").value;
 
-	}
-	
-	requestLogin.onerror = function (e) {
-		console.error(requestLogin.statusText);
-	};
-	
-	requestLogin.send(json);
-}
+    var json = '{"titulo" : "'+titulo+'", "dataCadastro":"'+new Date+'", "descricao" : "'+descricao+'", "imagem" :"'+imagem+'", "status":"1"}';
 
-function destaquePut() {
-}
+    post.onload = function (e) {
 
-function destaqueDelete() {
-}
+      var obj = JSON.parse(post.responseText); 
+      var responseStatus = post.status;
+      console.log(responseStatus);
+
+    }
+
+    post.onerror = function (e) {
+      console.error(post.statusText);
+    };
+
+    post.send(json);
+  }
+
+  function destaquePut() {
+	  var put = new XMLHttpRequest();
+	    var url = "http://localhost:8080/api-restful/api/console/destaques/" + getId();
+	    put.open("PUT", url, true);
+	    put.setRequestHeader("Content-type", "application/JSON");
+
+	    var tokenRecuperado = recuperarToken();
+	    put.setRequestHeader("Authorization", tokenRecuperado);
+
+	    var titulo = document.getElementById("inputTitulo").value;
+	    var descricao = document.getElementById("inputDescricao").value;
+	    var imagem = document.getElementById("inputImagem").value;
+
+	    var json = '{"titulo" : "'+titulo+'", "dataCadastro":"'+new Date+'", "descricao" : "'+descricao+'", "imagem" :"'+imagem+'", "status":"1"}';
+
+	    put.onload = function (e) {
+
+	      var obj = JSON.parse(put.responseText); 
+	      var responseStatus = put.status;
+	      console.log(responseStatus);
+
+	    }
+
+	    put.onerror = function (e) {
+	      console.error(put.statusText);
+	    };
+
+	    put.send(json);
+  }
+
+  function destaqueDelete() {
+	  var del = new XMLHttpRequest();
+	    var url = "http://localhost:8080/api-restful/api/console/destaques/" + getId();
+	    del.open("DELETE", url, true);
+	    del.setRequestHeader("Content-type", "application/JSON");
+
+	    var tokenRecuperado = recuperarToken();
+	    del.setRequestHeader("Authorization", tokenRecuperado);
+
+	    del.onload = function (e) {
+	      var responseStatus = del.status;
+	      console.log(responseStatus);
+	    }
+
+	    del.onerror = function (e) {
+	      console.error(del.statusText);
+	    };
+
+	    del.send();
+  }
 
 function getId(){
 	var aux = location.href;
@@ -181,7 +218,6 @@ function getPage(){
 	url = aux[5].split(".");
 	return url[0];
 }
-
 if(getPage() === "destaque" && typeof getId() != "undefined"){
 	mostrarAlterar(getId());
 }else{

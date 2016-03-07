@@ -98,8 +98,6 @@ function abrirALterarDestaque(data){
 	var id = data.getAttribute("data-id");
 }
 
-
-
 function voltar() {
 	location.href= "destaques.html";
 }
@@ -108,3 +106,10 @@ function sair() {
 	location.href= "index.html";
 }
 
+function btnAlterarNone () {
+	if(document.getElementById("btnAlterarDestaque").style.display === "none"){
+		document.getElementById("btnNovoDestaque").style.display = "";
+	}else
+		document.getElementById("btnAlterarDestaque").style.display = "initial";
+		document.getElementById("btnNovoDestaque").style.display = "initial";
+}

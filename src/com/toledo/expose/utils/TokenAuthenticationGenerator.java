@@ -34,7 +34,7 @@ public class TokenAuthenticationGenerator {
 	 * Identificador do destino do token
 	 * @author Nicolas Ibanheiz | 11/09/2015
 	 */
-	private static final String AUDIENCE = "GETLOG-Mobile";
+	private static final String AUDIENCE = "SEX-SHOP-JUCA";
 
 	/**
 	 * Para que o Token serve

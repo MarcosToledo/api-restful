@@ -27,17 +27,20 @@ public class DAO<T> implements Serializable {
 	@Transactional
 	public void save(T entity) {
 		entityManager.persist(entity);
+		entityManager.joinTransaction();
 	}
 
 	@Transactional
-	public T update(T entity) {
-		return entityManager.merge(entity);
+	public void update(T entity) {
+		entityManager.merge(entity);
+		entityManager.joinTransaction();
 	}
 
 	@Transactional
-	public void delete(Object id, Class<T> classe) {
+	public void delete(Integer id, Class<T> classe) {
 		T entityToBeRemoved = entityManager.getReference(classe, id);
 		entityManager.remove(entityToBeRemoved);
+		entityManager.joinTransaction();
 	}
 
 	public T findById(int id) {
