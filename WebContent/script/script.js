@@ -1,11 +1,15 @@
 function carregarIndex() {
 	onresize();
 	produtoGet();
-	servicoGet();
+	servicoSiteGet();
 }
 
 function carregarDestaque() {
 	destaqueConsoleGet();
+}
+
+function carregarServicos() {
+	servicoGet();
 }
 
 function carregarDestaqueAlterar() {
@@ -94,12 +98,21 @@ function novoDestaque(){
 	location.href= "destaque.html";
 }
 
+function novoServico(){
+	location.href= "servico.html";
+}
+
+
 function abrirALterarDestaque(data){
 	var id = data.getAttribute("data-id");
 }
 
-function voltar() {
+function voltarDestaque() {
 	location.href= "destaques.html";
+}
+
+function voltarServico() {
+	location.href= "servicos.html";
 }
 
 function sair() {
@@ -113,3 +126,12 @@ function btnAlterarNone () {
 		document.getElementById("btnAlterarDestaque").style.display = "initial";
 		document.getElementById("btnNovoDestaque").style.display = "initial";
 }
+
+function btnAlterarNoneServico () {
+	if(document.getElementById("btnAlterarServico").style.display === "none"){
+		document.getElementById("btnNovoDestaque").style.display = "";
+	}else
+		document.getElementById("btnAlterarServico").style.display = "initial";
+		document.getElementById("btnNovoDestaque").style.display = "initial";
+}
+

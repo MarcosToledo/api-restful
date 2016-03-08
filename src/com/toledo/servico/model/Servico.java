@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  * The persistent class for the servico database table.
  * 
  */
-@XmlType(name = "Servico", propOrder = {"id", "dataCadastro", "descricao","imagem", "nome", "status"})
+@XmlType(name = "Servico", propOrder = {"id", "titulo", "dataCadastro", "descricao","imagem", "nome", "status"})
 @XmlRootElement
 @Entity
 @Table(name = "servico")
@@ -28,6 +28,8 @@ public class Servico implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	
+	private String titulo;
 
 	@Column(name="data_cadastro")
 	private Date dataCadastro;
@@ -50,6 +52,20 @@ public class Servico implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the titulo
+	 */
+	public String getTitulo() {
+		return titulo;
+	}
+
+	/**
+	 * @param titulo the titulo to set
+	 */
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public Date getDataCadastro() {
@@ -90,6 +106,38 @@ public class Servico implements Serializable {
 
 	public void setStatus(byte status) {
 		this.status = status;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Servico other = (Servico) obj;
+		if (id != other.id) {
+			return false;
+		}
+		return true;
 	}
 
 }

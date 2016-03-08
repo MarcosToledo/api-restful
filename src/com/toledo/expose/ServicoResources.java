@@ -33,12 +33,20 @@ public class ServicoResources implements Serializable {
 		return servicoDao.findAll();
 	}
 	
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Servico buscarPorId(@PathParam("id") String id) {
+		return servicoDao.findById(Integer.parseInt(id));
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(Servico servico){
 		servicoDao.save(servico);
 		return Response.ok(servico, MediaType.APPLICATION_JSON).build();
 	}
+	
 	@PUT
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)

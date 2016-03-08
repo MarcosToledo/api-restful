@@ -54,7 +54,6 @@
     requestDestaque.onerror = function(e) {
       console.error(requestDestaque.statusText);
     };
-
     requestDestaque.send();
   }
 
@@ -79,8 +78,7 @@
       document.getElementById("inputTitulo").value = titulo;
       document.getElementById("inputDescricao").value = descricao;
       document.getElementById("inputImagem").value = imagem;
-      document.getElementById("btnAlterarDestaque").setAttribute("data-id",
-        id);
+      document.getElementById("btnAlterarDestaque").setAttribute("data-id", id);
     }
 
     requestDestaque.onerror = function(e) {
@@ -111,11 +109,11 @@
       document.getElementById("inputDescricao").value = descricao;
       document.getElementById("inputImagem").value = imagem;
     }
-
+    
     requestDestaque.onerror = function(e) {
       console.error(requestDestaque.statusText);
     };
-
+    
     requestDestaque.send();
   }
 
@@ -205,14 +203,28 @@
 	    del.send();
   }
 
-function getId(){
+function inserirALterarDestaque() {
+	if (getId() == undefined) {
+		destaquePost();
+		location.href= "destaques.html";
+	}
+	destaquePut();
+	location.href= "destaques.html";
+	
+}
+function removerDestaque() {
+	destaqueDelete();
+}
+  
+  
+function getId() {
 	var aux = location.href;
 	aux = aux.split("/");
 	url = aux[5].split("=");
 	return url[1];
 }
 
-function getPage(){
+function getPage() {
 	var aux = location.href;
 	aux = aux.split("/");
 	url = aux[5].split(".");

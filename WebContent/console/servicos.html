@@ -4,10 +4,10 @@
 		<meta charset="UTF-8">
 		<title>Sex Shop do Juca</title>
 		<link rel="stylesheet" href="../style.css">
-		<link rel="stylesheet" href="../style/destaqueStyle.css">
+		<link rel="stylesheet" href="../style/servicoStyle.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
-	<body onload="carregarDestaque()">
+	<body onload="carregarServicos()">
 		<header class="header">
 			<div class="div-logo">
 				<img src="../images/mobile/logo.png" alt="logo">
@@ -37,13 +37,17 @@
 		</header>
 		<section>
 			<div id="gridContainer" class="grid-container">
-			<div><p>Destaques</p></div>
+			<div><p>Servicos</p></div>
 				<table id="table"></table>
 			</div>
 			<div id="formulario" class="div-formulario">
 				<div>
 					<label class="lbl-titulo">Titulo</label>
 					<input id="inputTitulo" disabled="disabled" class="campo-titulo" type="text" name="Titulo">
+				</div>
+				<div>
+					<label class="lbl-nome">Nome</label>
+					<input id="inputNome" disabled="disabled" class="campo-titulo" type="text" name="Nome">
 				</div>
 				<div>
 					<label class="lbl-descricao">Descrição</label>
@@ -55,11 +59,12 @@
 				</div>	
 			</div>
 			<div>
-				<button type="button" id="btnNovoDestaque" class="btn-novo" onclick="novoDestaque()" ><p>Novo</p></button>
-				<button type="button" id="btnAlterarDestaque" class="btn-alterar" onclick="alterarDestaque(this)" ><p>Alterar</p></button>
+				<button type="button" id="btnNovoDestaque" class="btn-novo" onclick="novoServico()" ><p>Novo</p></button>
+				<button type="button" id="btnAlterarServico" class="btn-alterar" onclick="alterarServico(this)" ><p>Alterar</p></button>
 			</div>
 		</section>
 		<script src="../script/script.js" ></script>
 		<script src="../script/destaqueRequest.js" ></script>
+		<script src="../script/servicoRequest.js" ></script>
 	</body>
 </html>	

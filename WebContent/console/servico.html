@@ -4,10 +4,10 @@
 		<meta charset="UTF-8">
 		<title>Sex Shop do Juca</title>
 		<link rel="stylesheet" href="../style.css">
-		<link rel="stylesheet" href="../style/destaqueStyle.css">
+		<link rel="stylesheet" href="../style/servicoStyle.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
-	<body onload="carregarDestaque()">
+	<body>
 		<header class="header">
 			<div class="div-logo">
 				<img src="../images/mobile/logo.png" alt="logo">
@@ -21,10 +21,10 @@
 						<a href="../index.html">Home</a>
 					</li>
 					<li class="menu-item">
-						<a href="destaques.html">Destaque</a>
+						<a href="#">Destaque</a>
 					</li>
 					<li class="menu-item">
-						<a href="servicos.html">Serviços</a>
+						<a href="#">Serviços</a>
 					</li>
 					<li class="menu-item">
 						<a href="#">Produtos</a>
@@ -36,27 +36,24 @@
 			</nav>
 		</header>
 		<section>
-			<div id="gridContainer" class="grid-container">
-			<div><p>Destaques</p></div>
-				<table id="table"></table>
-			</div>
 			<div id="formulario" class="div-formulario">
-				<div>
-					<label class="lbl-titulo">Titulo</label>
-					<input id="inputTitulo" disabled="disabled" class="campo-titulo" type="text" name="Titulo">
+				<div class="div-titulo">
+					<label class="lbl-titulo-alteracao">Titulo</label>
+					<input id="inputTitulo" class="campo-titulo-alteracao" type="text" name="Titulo">
 				</div>
-				<div>
-					<label class="lbl-descricao">Descrição</label>
-					<textarea id="inputDescricao" disabled="disabled" class="campo-descricao" rows="10" cols="50"></textarea>
+				<div class="div-descricao">
+					<label class="lbl-descricao-alteracao">Descrição</label>
+					<textarea id="inputDescricao" class="campo-descricao-alteracao" rows="10" cols="50"></textarea>
 				</div>
-				<div>
-					<label class="lbl-imagem">Imagem</label>
-					<input id="inputImagem" disabled="disabled" class="campo-imagem" type="text" name="Imagem">
+				<div class="div-imagem">
+					<label class="lbl-imagem-alteracao">Imagem</label>
+					<input id="inputImagem" class="campo-imagem-alteracao" type="text" name="Imagem">
 				</div>	
 			</div>
 			<div>
-				<button type="button" id="btnNovoDestaque" class="btn-novo" onclick="novoDestaque()" ><p>Novo</p></button>
-				<button type="button" id="btnAlterarDestaque" class="btn-alterar" onclick="alterarDestaque(this)" ><p>Alterar</p></button>
+				<button id="btnSalvar"  type="button" class="btn-salvar-alteracao" onclick="inserirALterarDestaque()" ><p>Salvar</p></button>
+				<button type="button" class="btn-remover-alteracao" onclick="removerDestaque()" ><p>Remover</p></button>
+				<button type="button" class="btn-voltar-alteracao" onclick="voltarServico()" ><p>Voltar</p></button>
 			</div>
 		</section>
 		<script src="../script/script.js" ></script>
