@@ -22,8 +22,8 @@ public class DestaqueService implements Serializable {
 		dao.update(destaque);
 	}
 
-	public void remove(String id ,Destaque destaque) {
-		dao.delete(Integer.parseInt(id), Destaque.class);
+	public void remove(String id) {
+		dao.delete(Integer.parseInt(id));
 	}
 
 	public Destaque findById(int id) {

@@ -37,7 +37,7 @@ public class DAO<T> implements Serializable {
 	}
 
 	@Transactional
-	public void delete(Integer id, Class<T> classe) {
+	public void delete(Integer id) {
 		T entityToBeRemoved = entityManager.getReference(classe, id);
 		entityManager.remove(entityToBeRemoved);
 		entityManager.joinTransaction();

@@ -170,7 +170,7 @@ function servicoPut() {
 
 function servicoDelete() {
 	var del = new XMLHttpRequest();
-    var url = "http://localhost:8080/api-restful/api/console/destaques/" + getId();
+    var url = "http://localhost:8080/api-restful/api/console/servicos/" + getId();
     del.open("DELETE", url, true);
     del.setRequestHeader("Content-type", "application/JSON");
 
@@ -208,15 +208,24 @@ function mostrarAlterarServico(id) {
       var imagem = servicos.imagem;
 
       document.getElementById("inputTitulo").value = titulo;
+      document.getElementById("inputNome").value = nome;
       document.getElementById("inputDescricao").value = descricao;
       document.getElementById("inputImagem").value = imagem;
- }
-
-function alterarServico(data) {
-    var id = data.getAttribute("data-id");
-    location.href= "servico.html?id="+id;
-  }
+    }
     
+    requestServico.onerror = function(e) {
+        console.error(requestServico.statusText);
+     };
+   
+     requestServico.send();
+}
+
+function removerServico() {
+	servicoDelete();
+	location.href = "servicos.html";
+}
+
+
 function getId() {
 	var aux = location.href;
 	aux = aux.split("/");
@@ -235,5 +244,5 @@ if(getPage() === "servico" && typeof getId() != "undefined"){
 	mostrarAlterarServico(getId());
 }else{
 	console.log("Página de Cadastrar");
-	}
 }
+

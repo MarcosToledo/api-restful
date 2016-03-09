@@ -59,8 +59,8 @@ public class DestaqueResources implements Serializable {
 	@DELETE
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response remover(@PathParam("id") String id, Destaque destaque) {
-		destaqueService.remove(id ,destaque);
+	public Response remover(@PathParam("id") String id) {
+		destaqueService.remove(id);
 		return Response.ok().build();
 	}
 }

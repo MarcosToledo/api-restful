@@ -33,6 +33,13 @@ public class ProdutoResources implements Serializable {
 		return produtoDao.findAll();
 	}
 	
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Produto buscarPorId(@PathParam("id") String id) {
+		return produtoDao.findById(Integer.parseInt(id));
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(Produto produto){
@@ -53,7 +60,7 @@ public class ProdutoResources implements Serializable {
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response remover(@PathParam("id") String id) {
-		produtoDao.delete(Integer.parseInt(id), Produto.class);
+		produtoDao.delete(Integer.parseInt(id));
 		return Response.ok().build();
 	}
 }

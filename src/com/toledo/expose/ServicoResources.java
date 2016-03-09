@@ -60,7 +60,7 @@ public class ServicoResources implements Serializable {
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response remover(@PathParam("id") String id) {
-		servicoDao.delete(Integer.parseInt(id), Servico.class);
+		servicoDao.delete(Integer.parseInt(id));
 		return Response.ok().build();
 	}
 }

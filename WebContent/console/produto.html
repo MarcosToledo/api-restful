@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Sex Shop do Juca</title>
 		<link rel="stylesheet" href="../style.css">
-		<link rel="stylesheet" href="../style/destaqueStyle.css">
+		<link rel="stylesheet" href="../style/produtoStyle.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
@@ -41,6 +41,10 @@
 					<label class="lbl-titulo-alteracao">Titulo</label>
 					<input id="inputTitulo" class="campo-titulo-alteracao" type="text" name="Titulo">
 				</div>
+				<div>
+					<label class="lbl-nome">Nome</label>
+					<input id="inputNome" class="campo-titulo-produto" type="text" name="Nome">
+				</div>
 				<div class="div-descricao">
 					<label class="lbl-descricao-alteracao">Descrição</label>
 					<textarea id="inputDescricao" class="campo-descricao-alteracao" rows="10" cols="50"></textarea>
@@ -51,12 +55,12 @@
 				</div>	
 			</div>
 			<div>
-				<button id="btnSalvar"  type="button" class="btn-salvar-alteracao" onclick="inserirALterarDestaque()" ><p>Salvar</p></button>
-				<button type="button" class="btn-remover-alteracao" onclick="removerDestaque()" ><p>Remover</p></button>
-				<button type="button" class="btn-voltar-alteracao" onclick="voltarDestaque()" ><p>Voltar</p></button>
+				<button id="btnSalvar"  type="button" class="btn-salvar-alteracao" onclick="inserirALterarProduto()" ><p>Salvar</p></button>
+				<button type="button" class="btn-remover-alteracao" onclick="removerProduto()" ><p>Remover</p></button>
+				<button type="button" class="btn-voltar-alteracao" onclick="voltarProduto()" ><p>Voltar</p></button>
 			</div>
 		</section>
 		<script src="../script/script.js" ></script>
-		<script src="../script/destaqueRequest.js" ></script>
+		<script src="../script/produtoRequest.js" ></script>
 	</body>
 </html>	

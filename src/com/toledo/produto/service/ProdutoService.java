@@ -23,7 +23,7 @@ public class ProdutoService implements Serializable {
 	}
 
 	public void remove(Produto produto) {
-		dao.delete(produto.getId(), Produto.class);
+		dao.delete(produto.getId());
 	}
 
 	public Produto findById(int id) {

@@ -40,7 +40,7 @@ public class UsuarioService implements Serializable {
 	}
 
 	public void remove(Usuario usuario) {
-		dao.delete(usuario.getId(), Usuario.class);
+		dao.delete(usuario.getId());
 	}
 
 	public Usuario findById(int id) {

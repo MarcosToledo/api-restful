@@ -23,7 +23,7 @@ public class ServicoService implements Serializable {
 	}
 
 	public void remove(Servico servico) {
-		dao.delete(servico.getId(), Servico.class);
+		dao.delete(servico.getId());
 	}
 
 	public Servico findById(int id) {

@@ -2,6 +2,7 @@ function carregarIndex() {
 	onresize();
 	produtoGet();
 	servicoSiteGet();
+	destaqueSiteGet();
 }
 
 function carregarDestaque() {
@@ -10,6 +11,10 @@ function carregarDestaque() {
 
 function carregarServicos() {
 	servicoGet();
+}
+
+function carregarProdutos() {
+	produtoGet();
 }
 
 function carregarDestaqueAlterar() {
@@ -80,8 +85,6 @@ function logar() {
 			break;
 		case 200:
 			sessionStorage.setItem('token', obj.token);
-			location.href= "console/destaques.html";
-			break;
 		default:
 			break;
 		}
@@ -102,6 +105,10 @@ function novoServico(){
 	location.href= "servico.html";
 }
 
+function novoProduto(){
+	location.href= "produto.html";
+}
+
 
 function abrirALterarDestaque(data){
 	var id = data.getAttribute("data-id");
@@ -109,6 +116,10 @@ function abrirALterarDestaque(data){
 
 function voltarDestaque() {
 	location.href= "destaques.html";
+}
+
+function voltarProduto() {
+	location.href= "produtos.html";
 }
 
 function voltarServico() {
@@ -122,16 +133,27 @@ function sair() {
 function btnAlterarNone () {
 	if(document.getElementById("btnAlterarDestaque").style.display === "none"){
 		document.getElementById("btnNovoDestaque").style.display = "";
+		document.getElementById("formulario").style.display = "none";
 	}else
 		document.getElementById("btnAlterarDestaque").style.display = "initial";
 		document.getElementById("btnNovoDestaque").style.display = "initial";
+		
 }
 
 function btnAlterarNoneServico () {
 	if(document.getElementById("btnAlterarServico").style.display === "none"){
-		document.getElementById("btnNovoDestaque").style.display = "";
+		document.getElementById("btnNovoServico").style.display = "";
+		document.getElementById("formulario").style.display = "none";
 	}else
 		document.getElementById("btnAlterarServico").style.display = "initial";
-		document.getElementById("btnNovoDestaque").style.display = "initial";
+		document.getElementById("btnNovoServico").style.display = "initial";
 }
 
+function btnAlterarNoneProduto () {
+	if(document.getElementById("btnAlterarProduto").style.display === "none"){
+		document.getElementById("btnNovoProduto").style.display = "";
+		document.getElementById("formulario").style.display = "none";
+	}else
+		document.getElementById("btnAlterarProduto").style.display = "initial";
+		document.getElementById("btnNovoProduto").style.display = "initial";
+}

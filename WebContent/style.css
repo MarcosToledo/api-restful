@@ -720,3 +720,12 @@ textarea:focus, input:focus {
 	color: #C2185B;
 	font-size: 25px;
 }
+
+.lbl-titulo-pag {	
+	margin: 0 0 0 15%; 
+}
+
+.lbl-titulo-pag p {	
+	font-size: 25px;
+    color: #526CFE;
+}

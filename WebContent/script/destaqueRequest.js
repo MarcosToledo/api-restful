@@ -45,8 +45,8 @@
 
         destaqueRow += '<tr class="linha">' +
         '<td class="coluna" onclick="recuperaIdDestaque(this); btnAlterarNone();" data-id='+ destaques.destaque[key].id+ '>'+titulo+'</td>' +
-        '<td class="coluna" onclick="recuperaIdDestaque(this)" data-id='+ destaques.destaque[key].id+ '>'+ descricao+ '</td>'+
-        '<td class="coluna" onclick="recuperaIdDestaque(this)" data-id='+ destaques.destaque[key].id + '>' + imagem + '</td>' +
+        '<td class="coluna" onclick="recuperaIdDestaque(this); btnAlterarNone();" data-id='+ destaques.destaque[key].id+ '>'+ descricao+ '</td>'+
+        '<td class="coluna" onclick="recuperaIdDestaque(this); btnAlterarNone();" data-id='+ destaques.destaque[key].id + '>' + imagem + '</td>' +
         '</tr>';
       }
       document.getElementById("table").innerHTML = destaqueRow;
@@ -214,6 +214,7 @@ function inserirALterarDestaque() {
 }
 function removerDestaque() {
 	destaqueDelete();
+	location.href = "destaques.html";
 }
   
   
