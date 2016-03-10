@@ -17,19 +17,19 @@
 			</div>
 			<nav class="nav" id="nav">
 				<ul class="menu">
-					<li class="menu-item">
-						<a href="../index.html">Home</a>
+					<li id="LinkMenuHome" class="menu-item">
+						<a href="index.html">Home</a>
 					</li>
-					<li class="menu-item">
+					<li id="LinkMenuDestaque" class="menu-item">
 						<a href="destaques.html">Destaque</a>
 					</li>
-					<li class="menu-item">
+					<li id="LinkMenuServicos" class="menu-item">
 						<a href="servicos.html">Serviços</a>
 					</li>
-					<li class="menu-item">
+					<li id="LinkMenuProdutos" class="menu-item">
 						<a href="produtos.html">Produtos</a>
 					</li>
-					<li class="menu-item">
+					<li id="LinkMenuSair" onclick="sair()" class="menu-item">
 						<a href="../index.html">Sair</a>
 					</li>
 				</ul>
@@ -54,7 +54,7 @@
 					<input id="inputImagem" disabled="disabled" class="campo-imagem" type="text" name="Imagem">
 				</div>	
 			</div>
-			<div>
+			<div class="div-botao-destaque">
 				<button type="button" id="btnNovoDestaque" class="btn-novo" onclick="novoDestaque()" ><p>Novo</p></button>
 				<button type="button" id="btnAlterarDestaque" class="btn-alterar" onclick="alterarDestaque(this)" ><p>Alterar</p></button>
 			</div>

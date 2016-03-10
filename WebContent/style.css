@@ -50,7 +50,7 @@ textarea:focus, input:focus {
 .menu-item {
 	width: 100%;
 	height: 60px;
-	margin: 0 15px 0 0;
+	margin: 0 15px 0 50px;
 	background-color: #C2185B;
 }
 
@@ -368,11 +368,13 @@ textarea:focus, input:focus {
 		display: flex;
 		justify-content: space-between;
 	}
+	
 	.menu-item {
 		width: auto;
-		margin: 0 15px 0 0;
+		margin: 0 15px 0 50px;
 		background-color: transparent;
 	}
+	
 	.menu-item a {
 		font-size: 18px;
 		line-height: 60px;
@@ -722,7 +724,7 @@ textarea:focus, input:focus {
 }
 
 .lbl-titulo-pag {	
-	margin: 0 0 0 15%; 
+	margin: 0 0 1% 15%; 
 }
 
 .lbl-titulo-pag p {	

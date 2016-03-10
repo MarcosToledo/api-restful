@@ -1,4 +1,4 @@
-function produtoGet() {
+function produtoSiteGet() {
 	var requestProduto = new XMLHttpRequest();
 	var url = "http://localhost:8080/api-restful/api/site/produtos";
 	requestProduto.open("GET", url, true);
@@ -11,8 +11,9 @@ function produtoGet() {
 		for(i in produtos.produto){
 			tagRepositorio += '<div class="div-produto">'+
 			'<img src="images/'+produtos.produto[i].imagem +'" alt="produto">'+
-			'<div class="titulo-texto-produto"><p>'+produtos.produto[i].nome+'</p></div>'+
-			'<div class="texto-produto"><p>'+ produtos.produto[i].descricao +'</p></div></div>';
+			'<div class="titulo-texto-produto"><p>'+produtos.produto[i].titulo+'</p></div>'+
+			'<div class="texto-produto"><p>'+ produtos.produto[i].descricao +'</p></div>' +
+			'</div>';
 		}
 		document.getElementById("produtoContainer").innerHTML = tagRepositorio;
 	}
@@ -107,10 +108,11 @@ function produtoPost() {
     post.setRequestHeader("Authorization", tokenRecuperado);
 
     var titulo = document.getElementById("inputTitulo").value;
-    var descricao = document.getElementById("inputDescricao").value;
+    var nome = document.getElementById("inputNome").value;
     var imagem = document.getElementById("inputImagem").value;
+    var descricao = document.getElementById("inputDescricao").value;
 
-    var json = '{"titulo" : "'+titulo+'", "dataCadastro":"'+new Date+'", "descricao" : "'+descricao+'", "imagem" :"'+imagem+'", "status":"1"}';
+    var json = '{"dataCadastro":"'+new Date+'", "titulo" : "'+titulo+'", "descricao" : "'+descricao+'", "nome": "'+nome+'","imagem" :"'+imagem+'", "status":"1"}';
 
     post.onload = function (e) {
 
@@ -137,10 +139,11 @@ function produtoPut() {
     put.setRequestHeader("Authorization", tokenRecuperado);
 
     var titulo = document.getElementById("inputTitulo").value;
+    var nome = document.getElementById("inputNome").value;
     var descricao = document.getElementById("inputDescricao").value;
     var imagem = document.getElementById("inputImagem").value;
 
-    var json = '{"titulo" : "'+titulo+'", "dataCadastro":"'+new Date+'", "descricao" : "'+descricao+'", "imagem" :"'+imagem+'", "status":"1"}';
+    var json = '{"dataCadastro":"'+new Date+'", "titulo" : "'+titulo+'", "descricao" : "'+descricao+'", "nome": "'+nome+'", "imagem" :"'+imagem+'", "status":"1"}';
 
     put.onload = function (e) {
 

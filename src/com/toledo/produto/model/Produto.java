@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * The persistent class for the produto database table.
  * 
  */
-@XmlType(name = "Produto", propOrder = {"id", "dataCadastro", "descricao","imagem", "nome", "status"})
+@XmlType(name = "Produto", propOrder = {"id", "dataCadastro", "titulo", "descricao", "imagem", "nome", "status"})
 @XmlRootElement
 @Entity
 @Table(name = "produto")
@@ -30,7 +30,9 @@ public class Produto implements Serializable {
 
 	@Column(name="data_cadastro")
 	private Date dataCadastro;
-
+	
+	private String titulo;
+	
 	private String descricao;
 
 	private String imagem;
@@ -48,6 +50,20 @@ public class Produto implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the titulo
+	 */
+	public String getTitulo() {
+		return titulo;
+	}
+
+	/**
+	 * @param titulo the titulo to set
+	 */
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public Date getDataCadastro() {

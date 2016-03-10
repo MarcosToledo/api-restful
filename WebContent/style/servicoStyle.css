@@ -50,6 +50,10 @@ th {
 	color: #fff;
 }
 
+.btn-form:hover {
+	background-image: linear-gradient(to bottom, #849fff, #92b3e8);
+}
+
 .grid-container {
 	position: relative;
 	margin: 120px 0 0 0;
@@ -157,6 +161,10 @@ textarea:disabled {
 	color: #fff;
 }
 
+.btn-form-alteracao:hover {
+	background-image: linear-gradient(to bottom, #849fff, #92b3e8);
+}
+
 #btnAlterarServico {
 	display: none;
 }
@@ -175,6 +183,10 @@ textarea:disabled {
 	color: #fff;
 }
 
+.btn-alterar:hover {
+	background-image: linear-gradient(to bottom, #849fff, #92b3e8);
+}
+
 .btn-novo {
 	position: relative;
 	width: 100px;
@@ -187,6 +199,10 @@ textarea:disabled {
 
 .btn-novo p {
 	color: #fff;
+}
+
+.btn-novo:hover {
+	background-image: linear-gradient(to bottom, #849fff, #92b3e8);
 }
 
 .btn-salvar-alteracao {
@@ -203,6 +219,10 @@ textarea:disabled {
 	color: #fff;
 }
 
+.btn-salvar-alteracao:hover {
+	background-image: linear-gradient(to bottom, #849fff, #92b3e8);
+}
+
 .btn-voltar-alteracao {
 	position: relative;
 	width: 100px;
@@ -217,6 +237,10 @@ textarea:disabled {
 	color: #fff;
 }
 
+.btn-voltar-alteracao:hover {
+	background-image: linear-gradient(to bottom, #849fff, #92b3e8);
+}
+
 .btn-remover-alteracao {
 	position: relative;
 	width: 100px;
@@ -229,6 +253,10 @@ textarea:disabled {
 
 .btn-remover-alteracao p {
 	color: #fff;
+}
+
+.btn-remover-alteracao:hover {
+	background-image: linear-gradient(to bottom, #849fff, #92b3e8);
 }
 
 .lbl-nome {

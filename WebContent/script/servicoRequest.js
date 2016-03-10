@@ -110,7 +110,7 @@ function alterarServico(data) {
 
 function servicoPost() {
 	 var post = new XMLHttpRequest();
-	    var url = "http://localhost:8080/api-restful/api/console/destaques";
+	    var url = "http://localhost:8080/api-restful/api/console/servicos";
 	    post.open("POST", url, true);
 	    post.setRequestHeader("Content-type", "application/JSON");
 
@@ -118,11 +118,11 @@ function servicoPost() {
 	    post.setRequestHeader("Authorization", tokenRecuperado);
 
 	    var titulo = document.getElementById("inputTitulo").value;
+	    var nome = document.getElementById("inputNome").value;
 	    var descricao = document.getElementById("inputDescricao").value;
 	    var imagem = document.getElementById("inputImagem").value;
 
-	    var json = '{"titulo" : "'+titulo+'", "dataCadastro":"'+new Date+'", "descricao" : "'+descricao+'", "imagem" :"'+imagem+'", "status":"1"}';
-
+	    var json = '{"dataCadastro":"'+new Date+'", "titulo" : "'+titulo+'", "descricao" : "'+descricao+'", "nome": "'+nome+'","imagem" :"'+imagem+'", "status":"1"}';
 	    post.onload = function (e) {
 
 	      var obj = JSON.parse(post.responseText); 
@@ -140,7 +140,7 @@ function servicoPost() {
 
 function servicoPut() {
 	var put = new XMLHttpRequest();
-    var url = "http://localhost:8080/api-restful/api/console/destaques/" + getId();
+    var url = "http://localhost:8080/api-restful/api/console/servicos/" + getId();
     put.open("PUT", url, true);
     put.setRequestHeader("Content-type", "application/JSON");
 
@@ -148,10 +148,11 @@ function servicoPut() {
     put.setRequestHeader("Authorization", tokenRecuperado);
 
     var titulo = document.getElementById("inputTitulo").value;
+    var nome = document.getElementById("inputNome").value;
     var descricao = document.getElementById("inputDescricao").value;
     var imagem = document.getElementById("inputImagem").value;
 
-    var json = '{"titulo" : "'+titulo+'", "dataCadastro":"'+new Date+'", "descricao" : "'+descricao+'", "imagem" :"'+imagem+'", "status":"1"}';
+    var json = '{"dataCadastro":"'+new Date+'", "titulo" : "'+titulo+'", "descricao" : "'+descricao+'", "nome": "'+nome+'","imagem" :"'+imagem+'", "status":"1"}';
 
     put.onload = function (e) {
 
@@ -218,6 +219,15 @@ function mostrarAlterarServico(id) {
      };
    
      requestServico.send();
+}
+
+function inserirAlterarServico() {
+	if (getId() == undefined) {
+		servicoPost();
+		location.href= "servicos.html";
+	}
+	servicoPut();
+	location.href= "servicos.html";
 }
 
 function removerServico() {

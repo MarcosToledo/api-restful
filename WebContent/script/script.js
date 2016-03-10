@@ -1,20 +1,27 @@
 function carregarIndex() {
 	onresize();
-	produtoGet();
+	produtoSiteGet();
 	servicoSiteGet();
 	destaqueSiteGet();
+	organizarMenu();
 }
 
 function carregarDestaque() {
 	destaqueConsoleGet();
+	organizarMenu();
+	document.getElementById("formulario").style.display = "none";
 }
 
 function carregarServicos() {
 	servicoGet();
+	organizarMenu();
+	document.getElementById("formulario").style.display = "none";
 }
 
 function carregarProdutos() {
 	produtoGet();
+	organizarMenu();
+	document.getElementById("formulario").style.display = "none";
 }
 
 function carregarDestaqueAlterar() {
@@ -47,7 +54,7 @@ function abrirModal() {
 }
 
 function recuperarToken() {
-	return (sessionStorage.token === undefined)  ? "" : sessionStorage.token;
+	return (sessionStorage.token === undefined) ? "" : sessionStorage.token;
 }
 
 function fecharModal() {
@@ -55,12 +62,71 @@ function fecharModal() {
 	document.getElementById("login").style.display = "none";
 	document.body.style.overflow = 'auto';
 }
-	
+
 function validarLogin() {
-	if (document.getElementById("inputLogin").value === "" || document.getElementById("inputSenha").value === "" ){
+	if (document.getElementById("inputLogin").value === ""
+			|| document.getElementById("inputSenha").value === "") {
 		alert("Por favor, preencha os campos");
+	} else {
+		logar();
+
 	}
-	else logar();
+}
+
+function validarFormularioDestaque() {
+	if (document.getElementById("inputTitulo").value === ""
+			|| document.getElementById("inputDescricao").value === ""
+			|| document.getElementById("inputImagem").value === "") {
+		alert("Por favor, preencha os campos");
+	} else {
+		inserirALterarDestaque();
+	}
+}
+
+function validarFormularioConsole() {
+	if (document.getElementById("inputTitulo").value === ""
+			|| document.getElementById("inputDescricao").value === ""
+			|| document.getElementById("inputImagem").value === ""
+			|| document.getElementById("inputNome").value === "") {
+		alert("Por favor, preencha os campos");
+		return false;
+	} else {
+		return true;
+	}
+
+}
+
+function validarServicos() {
+	if (validarFormularioConsole()) {
+		inserirAlterarServico();
+	} else {
+		return false;
+	}
+}
+
+function validarProdutos() {
+	if (validarFormularioConsole()) {
+		inserirALterarProduto();
+	} else {
+		return false;
+	}
+}
+
+function validarCaracteresDestaques() {
+	if (document.getElementById("inputTitulo").value > 33) {
+		alert("Tamanho do campo 'titulo' é maior do que o permitido");
+	}
+	return false;
+
+	if (document.getElementById("inputDescricao").value > 245) {
+		alert("Tamanho do campo 'Descrição é maior do que o permitido'")
+	}
+	return false;
+
+	if (document.getElementById("inputImagem").value < 4) {
+		alert("Tamanho do campo 'Imagem' é menor do que o permitido")
+	}
+
 }
 
 function logar() {
@@ -68,15 +134,15 @@ function logar() {
 	var url = "http://localhost:8080/api-restful/api/console/usuarios/logar";
 	requestLogin.open("POST", url, true);
 	requestLogin.setRequestHeader("Content-type", "application/JSON");
-	
+
 	var login = document.getElementById("inputLogin").value;
 	var senha = document.getElementById("inputSenha").value;
 
-	var json = '{"login" : "'+login+'", "senha" : "'+senha+'"}';
-	
-	requestLogin.onload = function (e) {
-		
-		var obj = JSON.parse(requestLogin.responseText); 
+	var json = '{"login" : "' + login + '", "senha" : "' + senha + '"}';
+
+	requestLogin.onload = function(e) {
+
+		var obj = JSON.parse(requestLogin.responseText);
 		var responseStatus = requestLogin.status;
 
 		switch (responseStatus) {
@@ -84,76 +150,92 @@ function logar() {
 			alert("Usuário e senha incorretos");
 			break;
 		case 200:
+			console.log(responseStatus);
 			sessionStorage.setItem('token', obj.token);
+			location.href = "console/destaques.html";
 		default:
 			break;
 		}
 	}
-	
-	requestLogin.onerror = function (e) {
+
+	requestLogin.onerror = function(e) {
 		console.error(requestLogin.statusText);
 	};
-	
+
 	requestLogin.send(json);
 }
 
-function novoDestaque(){
-	location.href= "destaque.html";
+function novoDestaque() {
+	location.href = "destaque.html";
 }
 
-function novoServico(){
-	location.href= "servico.html";
+function novoServico() {
+	location.href = "servico.html";
 }
 
-function novoProduto(){
-	location.href= "produto.html";
+function novoProduto() {
+	location.href = "produto.html";
 }
 
-
-function abrirALterarDestaque(data){
+function abrirALterarDestaque(data) {
 	var id = data.getAttribute("data-id");
 }
 
 function voltarDestaque() {
-	location.href= "destaques.html";
+	location.href = "destaques.html";
 }
 
 function voltarProduto() {
-	location.href= "produtos.html";
+	location.href = "produtos.html";
 }
 
 function voltarServico() {
-	location.href= "servicos.html";
+	location.href = "servicos.html";
 }
 
 function sair() {
-	location.href= "index.html";
+	sessionStorage.removeItem('token');
+	location.href = "index.html";
 }
 
-function btnAlterarNone () {
-	if(document.getElementById("btnAlterarDestaque").style.display === "none"){
+function btnAlterarNone() {
+	if (document.getElementById("btnAlterarDestaque").style.display === "none") {
 		document.getElementById("btnNovoDestaque").style.display = "";
-		document.getElementById("formulario").style.display = "none";
-	}else
+	} else
 		document.getElementById("btnAlterarDestaque").style.display = "initial";
-		document.getElementById("btnNovoDestaque").style.display = "initial";
-		
+	document.getElementById("btnNovoDestaque").style.display = "initial";
+	document.getElementById("formulario").style.display = "block";
 }
 
-function btnAlterarNoneServico () {
-	if(document.getElementById("btnAlterarServico").style.display === "none"){
+function btnAlterarNoneServico() {
+	if (document.getElementById("btnAlterarServico").style.display === "none") {
 		document.getElementById("btnNovoServico").style.display = "";
-		document.getElementById("formulario").style.display = "none";
-	}else
+	} else
 		document.getElementById("btnAlterarServico").style.display = "initial";
-		document.getElementById("btnNovoServico").style.display = "initial";
+	document.getElementById("btnNovoServico").style.display = "initial";
+	document.getElementById("formulario").style.display = "block";
 }
 
-function btnAlterarNoneProduto () {
-	if(document.getElementById("btnAlterarProduto").style.display === "none"){
+function btnAlterarNoneProduto() {
+	if (document.getElementById("btnAlterarProduto").style.display === "none") {
 		document.getElementById("btnNovoProduto").style.display = "";
-		document.getElementById("formulario").style.display = "none";
-	}else
+	} else
 		document.getElementById("btnAlterarProduto").style.display = "initial";
-		document.getElementById("btnNovoProduto").style.display = "initial";
+	document.getElementById("btnNovoProduto").style.display = "initial";
+	document.getElementById("formulario").style.display = "block";
+}
+
+function organizarMenu() {
+	if (recuperarToken() === "") {
+		document.getElementById("LinkMenuHome").style.display = "block";
+		document.getElementById("LinkMenuDestaque").style.display = "none";
+		document.getElementById("LinkMenuServicos").style.display = "none";
+		document.getElementById("LinkMenuProdutos").style.display = "none";
+		document.getElementById("LinkMenuLogin").style.display = "block";
+	} else {
+		document.getElementById("LinkMenuHome").style.display = "none";
+		document.getElementById("LinkMenuDestaque").style.display = "block";
+		document.getElementById("LinkMenuServicos").style.display = "block";
+		document.getElementById("LinkMenuProdutos").style.display = "block";
+	}
 }

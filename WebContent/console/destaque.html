@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="../style/destaqueStyle.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
-	<body>
+	<body onload="organizarMenu()">
 		<header class="header">
 			<div class="div-logo">
 				<img src="../images/mobile/logo.png" alt="logo">
@@ -17,19 +17,19 @@
 			</div>
 			<nav class="nav" id="nav">
 				<ul class="menu">
-					<li class="menu-item">
-						<a href="../index.html">Home</a>
+					<li id="LinkMenuHome" class="menu-item">
+						<a href="index.html">Home</a>
 					</li>
-					<li class="menu-item">
+					<li id="LinkMenuDestaque" class="menu-item">
 						<a href="destaques.html">Destaque</a>
 					</li>
-					<li class="menu-item">
+					<li id="LinkMenuServicos" class="menu-item">
 						<a href="servicos.html">Serviços</a>
 					</li>
-					<li class="menu-item">
+					<li id="LinkMenuProdutos" class="menu-item">
 						<a href="produtos.html">Produtos</a>
 					</li>
-					<li class="menu-item">
+					<li id="LinkMenuSair" onclick="sair()" class="menu-item">
 						<a href="../index.html">Sair</a>
 					</li>
 				</ul>
@@ -39,11 +39,11 @@
 			<div id="formulario" class="div-formulario">
 				<div class="div-titulo">
 					<label class="lbl-titulo-alteracao">Titulo</label>
-					<input id="inputTitulo" class="campo-titulo-alteracao" type="text" name="Titulo">
+					<input id="inputTitulo" class="campo-titulo-alteracao" maxlength="23" type="text" name="Titulo">
 				</div>
 				<div class="div-descricao">
 					<label class="lbl-descricao-alteracao">Descrição</label>
-					<textarea id="inputDescricao" class="campo-descricao-alteracao" rows="10" cols="50"></textarea>
+					<textarea id="inputDescricao" class="campo-descricao-alteracao" rows="10" maxlength="245" cols="50"></textarea>
 				</div>
 				<div class="div-imagem">
 					<label class="lbl-imagem-alteracao">Imagem</label>
@@ -51,7 +51,7 @@
 				</div>	
 			</div>
 			<div>
-				<button id="btnSalvar"  type="button" class="btn-salvar-alteracao" onclick="inserirALterarDestaque()" ><p>Salvar</p></button>
+				<button id="btnSalvar"  type="button" class="btn-salvar-alteracao" onclick="validarFormularioDestaque()" ><p>Salvar</p></button>
 				<button type="button" class="btn-remover-alteracao" onclick="removerDestaque()" ><p>Remover</p></button>
 				<button type="button" class="btn-voltar-alteracao" onclick="voltarDestaque()" ><p>Voltar</p></button>
 			</div>

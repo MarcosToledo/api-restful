@@ -37,19 +37,19 @@
 
       destaqueRow += '<tr class="cabecalho"><th>Titulo</th><th>Descrição</th><th>Imagem</th></tr>';
 
-      for (key in destaques.destaque) {
-
-        var titulo = destaques.destaque[key].titulo;
-        var descricao = destaques.destaque[key].descricao;
-        var imagem = destaques.destaque[key].imagem;
-
-        destaqueRow += '<tr class="linha">' +
-        '<td class="coluna" onclick="recuperaIdDestaque(this); btnAlterarNone();" data-id='+ destaques.destaque[key].id+ '>'+titulo+'</td>' +
-        '<td class="coluna" onclick="recuperaIdDestaque(this); btnAlterarNone();" data-id='+ destaques.destaque[key].id+ '>'+ descricao+ '</td>'+
-        '<td class="coluna" onclick="recuperaIdDestaque(this); btnAlterarNone();" data-id='+ destaques.destaque[key].id + '>' + imagem + '</td>' +
-        '</tr>';
-      }
-      document.getElementById("table").innerHTML = destaqueRow;
+	 console.log(destaques.destaque);
+	var titulo = destaques.destaque.titulo;
+	var descricao = destaques.destaque.descricao;
+	var imagem = destaques.destaque.imagem;
+	
+	
+	destaqueRow += '<tr class="linha">' +
+	'<td class="coluna" onclick="recuperaIdDestaque(this); btnAlterarNone();" data-id='+ destaques.destaque.id+ '>'+titulo+'</td>' +
+	'<td class="coluna" onclick="recuperaIdDestaque(this); btnAlterarNone();" data-id='+ destaques.destaque.id+ '>'+ descricao+ '</td>'+
+	'<td class="coluna" onclick="recuperaIdDestaque(this); btnAlterarNone();" data-id='+ destaques.destaque.id + '>' + imagem + '</td>' +
+	'</tr>';
+	document.getElementById("table").innerHTML = destaqueRow;
+	verificaItemExistente(destaques);
     }
     requestDestaque.onerror = function(e) {
       console.error(requestDestaque.statusText);
@@ -74,7 +74,9 @@
       var descricao = destaques.descricao;
       var imagem = destaques.imagem;
       var id = destaques.id;
-
+      
+      verificaItemExistente(destaques);
+      
       document.getElementById("inputTitulo").value = titulo;
       document.getElementById("inputDescricao").value = descricao;
       document.getElementById("inputImagem").value = imagem;
@@ -169,10 +171,10 @@
 
 	    put.onload = function (e) {
 
-	      var obj = JSON.parse(put.responseText); 
-	      var responseStatus = put.status;
-	      console.log(responseStatus);
-
+	    var obj = JSON.parse(put.responseText); 
+	    var responseStatus = put.status;
+	    console.log(responseStatus);
+	      
 	    }
 
 	    put.onerror = function (e) {
@@ -203,6 +205,14 @@
 	    del.send();
   }
 
+function verificaItemExistente(Object) {
+	if (Object === "") {
+  	  document.getElementById("btnNovoDestaque").style.display = "block";
+    } else {
+  	  document.getElementById("btnNovoDestaque").style.display = "none";
+    }
+}
+  
 function inserirALterarDestaque() {
 	if (getId() == undefined) {
 		destaquePost();
@@ -216,8 +226,7 @@ function removerDestaque() {
 	destaqueDelete();
 	location.href = "destaques.html";
 }
-  
-  
+
 function getId() {
 	var aux = location.href;
 	aux = aux.split("/");
