@@ -40,6 +40,13 @@ public class ProdutoResources implements Serializable {
 		return produtoDao.findById(Integer.parseInt(id));
 	}
 	
+	@GET
+	@Path("{numeroPagina}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Produto> buscarPorPagina(@PathParam("numeroPagina") String numeroPagina) {
+		return produtoDao.findByNumberPage(Integer.parseInt(numeroPagina));
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(Produto produto){
