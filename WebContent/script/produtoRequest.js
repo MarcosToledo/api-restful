@@ -23,18 +23,34 @@ function produtoSiteGet() {
 	requestProduto.send();
 }
 
-function produtoGet() {
+var proximaPagina;
+
+function produtoGet(pag) {
  var requestProduto = new XMLHttpRequest();
-    var url = "http://localhost:8080/api-restful/api/console/produtos";
+ 	proximaPagina = pag + 1;
+ 	max = 5;
+ 	listagem = "";
+ 	listagem = (pag * max) - max;
+ 	pag = "/" + listagem + "/" + max;
+ 	
+    var url = "http://localhost:8080/api-restful/api/console/produtos" + pag;
     requestProduto.open("GET", url, true);
     requestProduto.withCredentials = false;
     var tokenRecuperado = recuperarToken();
     requestProduto.setRequestHeader("Authorization", tokenRecuperado);
 
     requestProduto.onload = function(e) {
-      var produtos = JSON.parse(requestProduto.responseText);
+      var produtosBuscados = JSON.parse(requestProduto.responseText);
       var servicoRow = "";
-
+      var produtos = {};
+      produtos.produto = [];
+      	
+      if (produtosBuscados.produto instanceof Array) {
+    	  produtos.produto = produtosBuscados.produto;
+      } else {
+    	  produtos.produto.push(produtosBuscados.produto); 
+      }
+      
       servicoRow += '<tr class="cabecalho"><th>Titulo</th><th>Nome</th><th>Descrição</th><th>Imagem</th></tr>';
 
       for (key in produtos.produto) {
@@ -43,7 +59,7 @@ function produtoGet() {
         var nome = produtos.produto[key].nome;
         var descricao = produtos.produto[key].descricao;
         var imagem = produtos.produto[key].imagem;
-
+        
         servicoRow += '<tr class="linha">' +
         '<td class="coluna" onclick="recuperaIdProduto(this); btnAlterarNoneProduto();" data-id='+ produtos.produto[key].id+ '>'+titulo+'</td>' +
         '<td class="coluna" onclick="recuperaIdProduto(this); btnAlterarNoneProduto();" data-id='+ produtos.produto[key].id+ '>'+nome+'</td>' +
@@ -52,12 +68,59 @@ function produtoGet() {
         '</tr>';
       }
       document.getElementById("table").innerHTML = servicoRow;
+      produtoGetBotoesPaginacao();
     }
     requestProduto.onerror = function(e) {
       console.error(requestProduto.statusText);
     };
 
     requestProduto.send();
+}
+
+function produtoGetBotoesPaginacao() {
+	var requestProduto = new XMLHttpRequest();
+	var url = "http://localhost:8080/api-restful/api/console/produtos";
+	requestProduto.open("GET", url, true);
+	requestProduto.withCredentials = false;
+	var tokenRecuperado = recuperarToken();
+	requestProduto.setRequestHeader("Authorization", tokenRecuperado);
+	
+	requestProduto.onload = function(e) {
+		 var produtos = JSON.parse(requestProduto.responseText);
+		 var i = 1;
+		 componenteBotao = "";
+		 numeroPaginas = produtos.produto.length / 5;
+		 
+		 if (numeroPaginas % 2 != 0) {
+			 (numeroPaginas +=  1);
+		} else {
+			 numeroPaginas;
+		}
+		 paginaAnterior = parseFloat(proximaPagina) - parseFloat(2);
+		 componenteBotao += '<button type="button" id="btnBack" class="btn-paginacao" onclick="produtoGet('+paginaAnterior+')" > < </button>'
+		for (i ; i < numeroPaginas; i++) {
+			componenteBotao += '<button type="button" id="btnPaginacao'+i+'" class="btn-paginacao" onclick="produtoGet('+ i +')"; page = '+i+'; >' + i + '</button>';
+		}
+		componenteBotao += '<button type="button" id="btnProximo" class="btn-paginacao" onclick="produtoGet('+proximaPagina+')" > > </button>';
+		
+		document.getElementById("containerPaginacao").innerHTML = componenteBotao;
+
+		if (proximaPagina >= i) {
+			document.getElementById("btnProximo").disabled = true;
+			document.getElementById("btnProximo").style.opacity = 0.5;
+		}
+		
+		if (proximaPagina == 2) {
+			document.getElementById("btnBack").disabled = true;
+			document.getElementById("btnBack").style.opacity = 0.5;
+		}
+		
+	}
+	requestProduto.onerror = function(e) {
+		console.error(requestProduto.statusText);
+	};
+	
+	requestProduto.send();
 }
 
 function recuperaIdProduto(data) {

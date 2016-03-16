@@ -41,10 +41,10 @@ public class ProdutoResources implements Serializable {
 	}
 	
 	@GET
-	@Path("{numeroPagina}")
+	@Path("/{min}/{max}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Produto> buscarPorPagina(@PathParam("numeroPagina") String numeroPagina) {
-		return produtoDao.findByNumberPage(Integer.parseInt(numeroPagina));
+	public List<Produto> buscarPorPagina(@PathParam("min") int min, @PathParam("max") int max) {
+		return produtoDao.findByNumberPage(min, max);
 	}
 	
 	@POST

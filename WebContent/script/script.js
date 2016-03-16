@@ -19,8 +19,9 @@ function carregarServicos() {
 }
 
 function carregarProdutos() {
-	produtoGet();
+	produtoGet(1);
 	organizarMenu();
+	produtoGetBotoesPaginacao();
 	document.getElementById("formulario").style.display = "none";
 }
 

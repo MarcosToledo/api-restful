@@ -1,10 +1,10 @@
 package com.toledo.produto.dao;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import com.toledo.dao.DAO;
 import com.toledo.produto.model.Produto;
@@ -16,11 +16,15 @@ public class ProdutoDao extends DAO<Produto> implements Serializable {
 	public ProdutoDao() {
 		super(Produto.class);
 	}
-
-	public List<Produto> findByNumberPage(int parseInt) {
-		List<Produto> listaProduto = new ArrayList<>();
+	
+	public List<Produto> findByNumberPage(int min, int max) {
+		List<Produto> listaProduto = null;
 		try {
-			String sql = "select * from produto limit 5,10";
+			String sql = "SELECT p FROM Produto p";
+			TypedQuery<Produto> query = entityManager.createQuery(sql, Produto.class)
+					.setFirstResult(min)
+					.setMaxResults(max);
+			listaProduto = query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

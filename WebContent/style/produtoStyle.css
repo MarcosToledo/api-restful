@@ -30,6 +30,7 @@ th {
 	background-color: #f5f5f5;
 	transition: all 0.2s linear; 
 }
+
 .coluna {
 	font-size: 12px;
 	padding: 0px 10px 0 10px;
@@ -195,6 +196,7 @@ textarea:disabled {
 	border-style: none;
 	border-radius: 3px;
 	margin: 30px 0px 30px 15%;
+	cursor: pointer;
 }
 
 .btn-novo p {
@@ -268,4 +270,26 @@ textarea:disabled {
     width: 600px;
     height: 25px;
     padding: 10px;
+}
+
+.btn-paginacao {
+	flex-direction: row;
+	width: 40px;
+    height: 25px;
+    margin: 0 3px 0 0;
+    background-image: linear-gradient(to bottom, #526cfe, #5397FE);
+    border-style: none;
+    border-radius: 3px;
+   	color: #FFFFFF;
+   	cursor: pointer;
+}
+
+.btn-paginacao:hover {
+	background-image: linear-gradient(to bottom, #849fff, #92b3e8);
+	transition: all 0.2s linear;
+}
+
+.container-paginacao {
+	display: flex;
+	margin: 25px 0 0 45%;
 }
