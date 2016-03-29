@@ -269,3 +269,25 @@ textarea:disabled {
     height: 25px;
     padding: 10px;
 }
+
+.btn-paginacao {
+	flex-direction: row;
+	width: 40px;
+    height: 25px;
+    margin: 0 3px 0 0;
+    background-image: linear-gradient(to bottom, #526cfe, #5397FE);
+    border-style: none;
+    border-radius: 3px;
+   	color: #FFFFFF;
+   	cursor: pointer;
+}
+
+.btn-paginacao:hover {
+	background-image: linear-gradient(to bottom, #849fff, #92b3e8);
+	transition: all 0.2s linear;
+}
+
+.container-paginacao {
+	display: flex;
+	margin: 25px 0 0 45%;
+}

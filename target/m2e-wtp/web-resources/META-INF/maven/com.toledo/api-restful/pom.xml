@@ -69,10 +69,15 @@
 			<artifactId>morphia</artifactId>
 			<version>0.109</version>
 		</dependency>
-		<dependency> 
-		  <groupId> org.bitbucket.b_c </groupId> 
-		  <artifactId> jose4j </artifactId> 
-		  <version> 0.4.4 </version> 
+		<dependency>
+			<groupId> org.bitbucket.b_c </groupId>
+			<artifactId> jose4j </artifactId>
+			<version> 0.4.4 </version>
+		</dependency>
+		<dependency>
+			<groupId>net.java.openjfx.backport</groupId>
+			<artifactId>openjfx-78-backport-compat</artifactId>
+			<version>1.8.0.1</version>
 		</dependency>
 	</dependencies>
 </project>

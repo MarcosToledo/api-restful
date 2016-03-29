@@ -26,13 +26,13 @@ function produtoSiteGet() {
 var proximaPagina;
 
 function produtoGet(pag) {
- var requestProduto = new XMLHttpRequest();
  	proximaPagina = pag + 1;
  	max = 5;
  	listagem = "";
  	listagem = (pag * max) - max;
  	pag = "/" + listagem + "/" + max;
  	
+ 	var requestProduto = new XMLHttpRequest();
     var url = "http://localhost:8080/api-restful/api/console/produtos" + pag;
     requestProduto.open("GET", url, true);
     requestProduto.withCredentials = false;

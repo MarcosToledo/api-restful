@@ -1,3 +1,21 @@
+function EL(id) { 
+	return document.getElementById(id); 
+} 
+
+function readFile() {
+  if (this.files && this.files[0]) {
+    var FR = new FileReader();
+    FR.onload = function(e) {
+      EL("img").src = e.target.result;
+      console.log(EL("img").src = e.target.result);
+      EL("b64").innerHTML = e.target.result;
+    };       
+    FR.readAsDataURL( this.files[0] );
+  }
+}
+
+EL("input").addEventListener("change", readFile, false);
+
 function carregarIndex() {
 	onresize();
 	produtoSiteGet();
@@ -13,7 +31,8 @@ function carregarDestaque() {
 }
 
 function carregarServicos() {
-	servicoGet();
+	servicoGet(1);
+	servicoGetBotoesPaginacao();
 	organizarMenu();
 	document.getElementById("formulario").style.display = "none";
 }

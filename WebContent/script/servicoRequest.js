@@ -32,9 +32,17 @@ function servicoSiteGet() {
 	requestServico.send();
 }
 
-function servicoGet() {
+var proximaPagina;
+
+function servicoGet(pag) {
+	proximaPagina = pag + 1;
+ 	max = 5;
+ 	listagem = "";
+ 	listagem = (pag * max) - max;
+ 	pag = "/" + listagem + "/" + max;
+ 	
  var requestServico = new XMLHttpRequest();
-    var url = "http://localhost:8080/api-restful/api/console/servicos";
+    var url = "http://localhost:8080/api-restful/api/console/servicos" + pag;
     requestServico.open("GET", url, true);
     requestServico.withCredentials = false;
     var tokenRecuperado = recuperarToken();
@@ -68,6 +76,52 @@ function servicoGet() {
     };
 
     requestServico.send();
+}
+
+function servicoGetBotoesPaginacao() {
+	var requestServico = new XMLHttpRequest();
+	var url = "http://localhost:8080/api-restful/api/console/servicos";
+	requestServico.open("GET", url, true);
+	requestServico.withCredentials = false;
+	var tokenRecuperado = recuperarToken();
+	requestServico.setRequestHeader("Authorization", tokenRecuperado);
+	
+	requestServico.onload = function(e) {
+		 var servicos = JSON.parse(requestServico.responseText);
+		 var i = 1;
+		 componenteBotao = "";
+		 numeroPaginas = servicos.servico.length / 5;
+		 
+		 if (numeroPaginas % 2 != 0) {
+			 (numeroPaginas +=  1);
+		} else {
+			 numeroPaginas;
+		}
+		 paginaAnterior = parseFloat(proximaPagina) - parseFloat(2);
+		 componenteBotao += '<button type="button" id="btnBack" class="btn-paginacao" onclick="produtoGet('+paginaAnterior+')" > < </button>'
+		for (i ; i < numeroPaginas; i++) {
+			componenteBotao += '<button type="button" id="btnPaginacao'+i+'" class="btn-paginacao" onclick="produtoGet('+ i +')"; page = '+i+'; >' + i + '</button>';
+		}
+		componenteBotao += '<button type="button" id="btnProximo" class="btn-paginacao" onclick="produtoGet('+proximaPagina+')" > > </button>';
+		
+		document.getElementById("containerPaginacao").innerHTML = componenteBotao;
+
+		if (proximaPagina >= i) {
+			document.getElementById("btnProximo").disabled = true;
+			document.getElementById("btnProximo").style.opacity = 0.5;
+		}
+		
+		if (proximaPagina == 2) {
+			document.getElementById("btnBack").disabled = true;
+			document.getElementById("btnBack").style.opacity = 0.5;
+		}
+		
+	}
+	requestServico.onerror = function(e) {
+		console.error(requestProduto.statusText);
+	};
+	
+	requestServico.send();
 }
 
 function recuperaIdServico(data) {

@@ -40,6 +40,13 @@ public class ServicoResources implements Serializable {
 		return servicoDao.findById(Integer.parseInt(id));
 	}
 	
+	@GET
+	@Path("/{min}/{max}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Servico> buscarPorPagina(@PathParam("min") int min, @PathParam("max") int max) {
+		return servicoDao.findByNumberPage(min, max);
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(Servico servico){
